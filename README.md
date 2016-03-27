@@ -7,7 +7,7 @@ The version used of the PHP-Fusion CMS is Version 9, cloned on 27 March 2016. An
 
 Setup
 =======
-For each theme, a new branch will be set up. Focus will be put on theme_includes.php functions that could vary per branch. Please run a diff to check on any possible modifications on the core files.
+For each theme, a new branch will be set up. Focus will be put on theme_includes, and theme relevant files functions that could vary per branch. Please run a diff to check on any possible modifications on the core files.
 
 Always in-Development
 =========================
