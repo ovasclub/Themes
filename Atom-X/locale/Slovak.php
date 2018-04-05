@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/locale/Slovak.php
+| Filename: Atom-X/locale/Slovak.php
 | Author: RobiNN
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -23,7 +23,7 @@ $locale['AX9_005'] = 'Moja poštová schránka';
 $locale['AX9_006'] = 'Nemáte žiadne neprečítané správy.';
 $locale['AX9_007'] = 'Prejdite do svojej schránky';
 $locale['AX9_008'] = 'Neboli nájdené žiadne skupiny';
-$locale['AX9_009'] = 'Atom-X9 pre PHP-Fusion v9<br/>'.date('Y').' Všetky práva vyhradené.';
+$locale['AX9_009'] = 'Atom-X pre PHP-Fusion v9<br/>'.date('Y').' Všetky práva vyhradené.';
 $locale['AX9_010'] = 'Tému navrhol <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a> tím, Pre v9 portoval <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Stránka profilu: ';
 $locale['AX9_012'] = 'Skrytý e-mail';

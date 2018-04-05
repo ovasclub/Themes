@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/locale/English.php
+| Filename: Atom-X/locale/English.php
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -24,7 +24,7 @@ $locale['AX9_005'] = 'My Mailbox';
 $locale['AX9_006'] = 'You have no unread messages.';
 $locale['AX9_007'] = 'Go to my mailbox';
 $locale['AX9_008'] = 'No groups found';
-$locale['AX9_009'] = 'Atom-X9 for PHP-Fusion v9<br/>'.date('Y').' All rights reserved.';
+$locale['AX9_009'] = 'Atom-X for PHP-Fusion v9<br/>'.date('Y').' All rights reserved.';
 $locale['AX9_010'] = 'Theme designed by <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Profile Page: ';
 $locale['AX9_012'] = 'Hidden Email';

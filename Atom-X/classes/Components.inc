@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/classes/Components.inc
+| Filename: Atom-X/classes/Components.inc
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -16,7 +16,7 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-namespace AtomX9Theme;
+namespace AtomXTheme;
 
 use \PHPFusion\Panels;
 

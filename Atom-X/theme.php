@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/theme.php
+| Filename: Atom-X/theme.php
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -67,7 +67,7 @@ function cache_users() {
 function render_page() {
     cache_users();
 
-    $atom = new AtomX9Theme\AtomX;
+    $atom = new AtomXTheme\AtomX;
     echo $atom->RenderPage();
 }
 
@@ -94,27 +94,27 @@ function closeside() {
 }
 
 function render_downloads($info) {
-    AtomX9Theme\Templates\Downloads::render_downloads($info);
+    AtomXTheme\Templates\Downloads::render_downloads($info);
 }
 
 function display_inbox($info) {
-    AtomX9Theme\Templates\Messages::GetInstance()->display_inbox($info);
+    AtomXTheme\Templates\Messages::GetInstance()->display_inbox($info);
 }
 
 function display_main_news($info) {
-    AtomX9Theme\Templates\News::GetInstance()->display_main_news($info);
+    AtomXTheme\Templates\News::GetInstance()->display_main_news($info);
 }
 
 function render_news_item($info) {
-    AtomX9Theme\Templates\News::GetInstance()->render_news_item($info);
+    AtomXTheme\Templates\News::GetInstance()->render_news_item($info);
 }
 
 function display_user_profile($info) {
-    AtomX9Theme\Templates\Profile::GetInstance()->DisplayProfile($info);
+    AtomXTheme\Templates\Profile::GetInstance()->DisplayProfile($info);
 }
 
 function display_profile_form() {
-    AtomX9Theme\Templates\Profile::GetInstance()->EditProfile();
+    AtomXTheme\Templates\Profile::GetInstance()->EditProfile();
 }
 
-set_image('noavatar50', fusion_get_settings('siteurl').'themes/Atom-X9/images/noavatar50.png');
+set_image('noavatar50', fusion_get_settings('siteurl').'themes/Atom-X/images/noavatar50.png');

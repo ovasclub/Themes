@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/theme_autoloader.php
+| Filename: Atom-X/theme_autoloader.php
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -21,7 +21,7 @@ if (!defined('IN_FUSION')) {
 }
 
 spl_autoload_register(function ($class_name) {
-    $path = THEME.'classes/'.str_replace(['\\', 'AtomX9Theme'], ['/', ''], $class_name).'.inc';
+    $path = THEME.'classes/'.str_replace(['\\', 'AtomXTheme'], ['/', ''], $class_name).'.inc';
 
     if (file_exists($path)) {
         require_once $path;

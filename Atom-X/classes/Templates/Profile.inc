@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/classes/Templates/Profile.inc
+| Filename: Atom-X/classes/Templates/Profile.inc
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -16,10 +16,10 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-namespace AtomX9Theme\Templates;
+namespace AtomXTheme\Templates;
 
-use AtomX9Theme\Core;
-use AtomX9Theme\Components;
+use AtomXTheme\Core;
+use AtomXTheme\Components;
 use \PHPFusion\Locale;
 
 class Profile extends Core {
@@ -74,7 +74,7 @@ class Profile extends Core {
         self::SetParam('section_header', $header);
         self::SetParam('container_fluid', TRUE);
 
-        $custom_avatar = fusion_get_settings('siteurl').'themes/Atom-X9/images/noavatar50.png';
+        $custom_avatar = fusion_get_settings('siteurl').'themes/Atom-X/images/noavatar50.png';
         $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
 
         echo '<div class="row">';

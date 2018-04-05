@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/classes/Templates/Downloads.inc
+| Filename: Atom-X/classes/Templates/Downloads.inc
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -16,9 +16,9 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-namespace AtomX9Theme\Templates;
+namespace AtomXTheme\Templates;
 
-use AtomX9Theme\Core;
+use AtomXTheme\Core;
 use \PHPFusion\Panels;
 
 class Downloads extends Core {

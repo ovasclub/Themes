@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/classes/Templates/News.inc
+| Filename: Atom-X/classes/Templates/News.inc
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+
@@ -16,10 +16,10 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-namespace AtomX9Theme\Templates;
+namespace AtomXTheme\Templates;
 
-use AtomX9Theme\Components;
-use AtomX9Theme\Core;
+use AtomXTheme\Components;
+use AtomXTheme\Core;
 use \PHPFusion\News\NewsServer;
 
 class News extends Core {
