@@ -169,3 +169,7 @@ input:focus, textarea:active, textarea:focus {
 #error_logform #delete_status-field {
     margin-top: 1.5px;
 }
+
+.album_thumbnail {
+    background: rgba(0, 0, 0, .51) !important;
+}

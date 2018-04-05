@@ -4,9 +4,8 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X9/locale/English.php
-| Author: PHP-Fusion Inc
-| Author: RobiNN
+| Filename: Atom-X9/locale/Hungarian.php
+| Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

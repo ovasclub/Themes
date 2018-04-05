@@ -396,12 +396,11 @@ class Producer {
         if ($title) {
             echo "<div class='head'>".$title."</div>\n";
         }
-        echo "<ul class='comments'>\n";
-        echo "<li class='activity'>\n";
+        echo "<div class='side-wrapper'>\n";
     }
 
     public function closeside() {
-        echo "</li>\n</ul>\n";
+        echo "</div>\n";
     }
 
     public function opensidex() {
@@ -413,7 +412,7 @@ class Producer {
         echo "</li></ul>\n";
     }
 
-    public function opentable($title = FALSE) {
+    public function opentable($title = FALSE, $class = '') {
         switch ($this->display_mode) {
             case 'canvas':
                 $sub_container_css = 'medium';
@@ -436,7 +435,7 @@ class Producer {
         if ($this->display_mode !== 'single' && $this->display_mode !== 'view') {
             if ($title)
                 self::title($title);
-            echo "<ul class='".$sub_container_css."'>\n<li>\n";
+            echo "<ul class='".$sub_container_css." ".$class."'>\n<li>\n";
         } else {
             echo "<div class='title'>\n<h1>".$title."</h1>\n";
         }
@@ -486,16 +485,14 @@ class Producer {
      * @param $img_link_url
      * @param $image_title
      * @param $author
-     * @param $comments_count
      */
-    public function photo_thumbnail($img_src, $img_link_url, $image_title, $author, $comments_count) {
+    public function photo_thumbnail($img_src, $img_link_url, $image_title, $author) {
         global $locale;
+        add_to_jquery("$('[data-trim-text]').trim_text();");
         echo "<a href='".$img_link_url."' class='removeParent' title='".$image_title." ".$locale['by']." ".$author."'>\n";
-        echo "<span class='img' style='background-image:url(".$img_src.");'></span>";
-        echo "<span class='title'>".$image_title." <small>".$locale['by']." ".$author."</small>\n";
-        echo "<span class='count'>".$comments_count."</span>\n";
+        echo '<img src="'.$img_src.'" alt="'.$image_title.'" style="height: 120px;" class="img img-responsive"/>';
+        echo "<span class='title'><span data-trim-text='20'>".$image_title."</span> <small>".$locale['by']." ".$author."</small></span>\n";
         echo "</a>\n";
-        self::tablebreak();
     }
 
     /*
@@ -555,9 +552,9 @@ function closesidex() {
 }
 
 
-function opentable($title) {
+function opentable($title, $class = '') {
     global $theme;
-    $theme->opentable($title);
+    $theme->opentable($title, $class);
 }
 
 function tablebreak() {
@@ -631,7 +628,7 @@ function display_avatar(array $userdata, $size, $class = '', $link = TRUE, $img_
     $default_avatar = !empty($custom_avatar) ? $custom_avatar : fusion_get_settings('siteurl')."images/avatars/noavatar50.png";
     $user_avatar = fusion_get_settings('siteurl')."images/avatars/".$userdata['user_avatar'];
     $hasAvatar = $userdata['user_avatar'] && file_exists(IMAGES."avatars/".$userdata['user_avatar']) && $userdata['user_status'] != '5' && $userdata['user_status'] != '6';
-    $imgTpl = "<img class='avatar img-responsive $img_class' alt='".(!empty($userdata['user_name']) ? $userdata['user_name'] : 'Guest')."' data-pin-nopin='true' style='display:inline; width:$size; max-height:$size;' src='%s'>";
+    $imgTpl = "<img class='avatar img-responsive $img_class' alt='".(!empty($userdata['user_name']) ? $userdata['user_name'] : 'Guest')."' data-pin-nopin='true' style='display:inline; width:$size;' src='%s'>";
     $img = sprintf($imgTpl, $hasAvatar ? $user_avatar : $default_avatar);
     return $link ? sprintf("<a $class title='".$userdata['user_name']."' href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>%s</a>", $img) : $img;
 }

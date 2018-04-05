@@ -5,7 +5,6 @@
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: Atom-X2/locale/Hungarian.php
-| Author: PHP-Fusion Inc
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the

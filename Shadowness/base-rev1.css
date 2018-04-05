@@ -49,7 +49,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     background-color: rgba(0, 0, 0, .1);
     border-radius: 0 5px 5px 0;
     border-left: 1px solid rgba(255, 255, 255, .1);
-    padding: 10px 15px !important;
+    padding: 0;
+}
+
+.sidebar .side-wrapper {
+    padding: 15px 10px;
 }
 
 .sidebar .comments {
@@ -1611,6 +1615,8 @@ li.button:active,
     box-shadow: 0 0 1px #000;
     -webkit-box-shadow: 0 0 1px #000;
     border-radius: 5px;
+    width: 100%;
+    height: auto;
 }
 
 .imgUser {
@@ -2854,7 +2860,7 @@ li.button {
 /* Medium */
 .medium {
     clear: left;
-    padding: 20px 0 0 15px;
+    padding: 15px 20px;
     overflow: hidden;
 }
 
@@ -2873,11 +2879,9 @@ li.button {
 
 .medium a {
     float: left;
-    width: 150px;
-    height: 130px;
     background: rgba(0, 0, 0, .5);
     border-radius: 5px;
-    margin: 0 0 20px 20px;
+    margin: 10px 0;
     position: relative;
     overflow: hidden;
 }
@@ -2886,16 +2890,10 @@ li.button {
     text-decoration: none;
 }
 
-.medium .img {
-    float: left;
-    width: 150px;
-    height: 100px;
-    clear: right;
-}
-
 .medium .title {
     float: left;
     margin-top: 9px;
+    margin-bottom: 9px;
     font-size: 12px;
     clear: left;
     margin-left: 10px;
@@ -2903,6 +2901,8 @@ li.button {
     overflow: hidden;
     height: 16px;
     font-weight: 300;
+    position: relative;
+    z-index: 1;
 }
 
 .medium .title:hover {
