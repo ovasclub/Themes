@@ -106,6 +106,8 @@ class Profile extends Core {
                             echo '<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">';
                                 foreach ($basic_info as $field_id => $data) {
                                     switch ($field_id) {
+                                        case 'profile_user_group':
+                                            break;
                                         case 'profile_user_joined':
                                             $user_level['user_joined'] = $data['value'];
                                             break;
@@ -115,7 +117,7 @@ class Profile extends Core {
                                         default:
                                             if (!empty($data['value'])) {
                                                 echo '<div id="'.$field_id.'" class="row">';
-                                                    echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">'.$data['title'].'</div>';
+                                                    echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><strong>'.$data['title'].'</strong></div>';
                                                     echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">'.$data['value'].'</div>';
                                                 echo '</div>';
                                             }
@@ -161,7 +163,7 @@ class Profile extends Core {
                                         foreach ($category_data['fields'] as $field_id => $field_data) {
                                             if ($field_data['value']) {
                                                 echo '<div id="field-'.$field_id.'" class="row">';
-                                                    echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">'.$field_data['title'].'</div>';
+                                                    echo '<label class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><strong>'.$field_data['title'].'</strong></label>';
                                                     echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">'.$field_data['value'].'</div>';
                                                 echo '</div>';
                                             } else {

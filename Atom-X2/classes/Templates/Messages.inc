@@ -39,7 +39,7 @@ class Messages extends Core {
         ob_start();
         echo '<ul>';
             foreach ($menu as $key => $folder) {
-                $active = isset($_GET['folder']) && $_GET['folder'] == $key || isset($_GET['msg_send']) && $_GET['msg_send'] == $key ? ' class="active"' : '';
+                $active = (isset($_GET['folder']) && $_GET['folder'] == $key) || (isset($_GET['msg_send']) && $_GET['msg_send'] == $key) ? ' class="active"' : '';
                 echo '<li'.$active.'><a href="'.$folder['link'].'"><span class="visible-xs"><i class="fa fa-'.$folder['icon'].'"></i></span><span class="hidden-xs">'.$folder['title'].'</span></a></li>';
             }
         echo '</ul>';
@@ -57,7 +57,8 @@ class Messages extends Core {
                     $i = 0;
                     echo '<ul class="msg-nav list-style-none m-t-20">';
                         foreach ($info['folders'] as $key => $folder) {
-                            $active = ($_GET['folder'] == $key ? ' class="active"' : '');
+                            $active = isset($_GET['folder']) && ($_GET['folder'] == $key) ? ' class="active text-dark"' : '';
+
                             echo '<li'.$active.'><a href="'.$folder['link'].'">';
                                 echo $folder['title'];
 
@@ -82,15 +83,6 @@ class Messages extends Core {
                                 echo '<i class="fa fa-long-arrow-left"></i>';
                             echo '</a>';
                         }
-
-                        add_to_jquery('
-                            $("#actionform").find("i.fa").removeClass("m-r-10");
-                            $("#actionform").find(".btn.btn-link").addClass("btn-block").css({
-                                "text-align": "left",
-                                "border-radius": "0px",
-                                "padding": "3px 20px"
-                            });
-                        ');
 
                         echo $info['actions_form'];
                     echo '</div>';

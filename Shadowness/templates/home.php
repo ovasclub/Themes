@@ -19,7 +19,7 @@
 function display_home($info) {
     $locale = fusion_get_locale();
     global $theme;
-    $theme->right_off = FALSE;
+
     include THEME.'templates/locale/'.LOCALESET.'/home.php';
 
     $_GET['section'] = !empty($_GET['section']) ? $_GET['section'] : 'news';

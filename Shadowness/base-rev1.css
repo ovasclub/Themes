@@ -52,8 +52,13 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     padding: 0;
 }
 
-.sidebar .side-wrapper {
+.sidebar .side-wrapper,
+.sidebar .block {
     padding: 15px 10px;
+}
+
+#navigation-user .block {
+    padding: 0;
 }
 
 .sidebar .comments {
@@ -311,16 +316,6 @@ span.shout img {
 .sidebar span.shout,
 .status span.shout {
     font-size: 11px;
-}
-
-.sidebar .badge {
-    padding: 10px 10px 10px 15px;
-}
-
-.sidebar .badge .about {
-    width: auto !important;
-    font-size: 13px !important;
-    line-height: 21px !important;
 }
 
 .sidebar .group .banner {
@@ -1342,6 +1337,7 @@ li.button:active,
 /* Single */
 .single {
     max-width: 640px;
+    padding: 0;
 }
 
 .single input[type="file"] {
@@ -1600,10 +1596,7 @@ li.button:active,
 }
 
 .avatar {
-    float: left;
     border-radius: 5px;
-    width: 48px;
-    height: 48px;
     text-indent: -9999px;
     background-repeat: no-repeat;
     box-shadow: 0 0 1px #111;
@@ -1686,6 +1679,10 @@ li.button {
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .05);
     box-shadow: 0 1px 0 rgba(255, 255, 255, .05);
     position: relative;
+}
+
+.head.menu {
+    margin-bottom: 0;
 }
 
 .home .menu a {
@@ -4117,11 +4114,6 @@ input[type='image']:hover {
     border-radius: 0 !important;
 }
 
-.nav-wrapper {
-    border-right: 1px solid rgba(255, 255, 255, .1);
-    margin-right: -1px;
-}
-
 .breadcrumb {
     background-color: rgba(0, 0, 0, .64);
 }
@@ -4186,4 +4178,16 @@ input[type='image']:hover {
 
 .modal .well {
     background: #fff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #131313;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #0a0a0a;
 }

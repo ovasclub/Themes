@@ -20,7 +20,7 @@ require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../main
 require_once THEMES.'templates/header.php';
 
 $theme->set_display_mode('single');
-$theme->right_off = TRUE;
+$theme->right = FALSE;
 $theme->show_menu = FALSE;
 $theme->grid = 12;
 

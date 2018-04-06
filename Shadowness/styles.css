@@ -131,8 +131,6 @@ input[type="submit"]:hover, button[type="submit"]:hover, .btn-primary:hover, .bt
 }
 
 input:focus, textarea:active, textarea:focus {
-    -webkit-box-shadow: 0 0 25px rgba(255, 255, 255, .5) !important;
-    box-shadow: 0 0 25px rgba(255, 255, 255, .5) !important;
     border: 1px solid rgba(255, 255, 255, .3) !important;
 }
 
@@ -172,4 +170,14 @@ input:focus, textarea:active, textarea:focus {
 
 .album_thumbnail {
     background: rgba(0, 0, 0, .51) !important;
+}
+
+abbr {
+    color: #888;
+}
+
+.maintenance .jumbotron {
+    color: #333 !important;
+    text-shadow: none !important;
+    background-color: rgba(238, 238, 238, 0.84);
 }

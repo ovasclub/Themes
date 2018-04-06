@@ -23,10 +23,6 @@ require_once INCLUDES."theme_functions_include.php";
  */
 class Producer {
     private $css_file = '';
-    private $right_panel = '';
-    private $left_panel = '';
-    public $right_before = FALSE;
-    public $left_before = FALSE;
 
     /* Theme properties */
     public $display_mode = 'full-grid'; // canvas for photo albums, //
@@ -39,7 +35,7 @@ class Producer {
     public $lg_width = 2;
     public $title_array = []; // set title array collection
     public $left_off = FALSE;
-    public $right_off = FALSE;
+    public $right = TRUE;
     public $tabbed_header = FALSE;
     public $grid = '';
 
@@ -53,7 +49,7 @@ class Producer {
      * override_page is multidimensional array format.
      * Example: $crossover = array('login.php', 'register.php');
      */
-    private $supported_template = ['home.php', 'profile.php', 'news.php', 'edit_profile.php'];
+    private $supported_template = ['home.php', 'login.php'];
 
     /* Cross Over documentation - NON MVC
      * Function : to bypass core output and replace with theme's own template output
@@ -73,8 +69,8 @@ class Producer {
         $this->lg_width = $this->max_width ? 2 : 3;
 
         $count = 0;
-        $count = ((defined('LEFT') && LEFT !== '' || $this->left_panel !== '') && ($this->left_off == FALSE)) ? $count + 1 : $count;
-        $count = ((defined('RIGHT') && RIGHT !== '' || $this->right_panel !== '') && ($this->right_off == FALSE)) ? $count + 1 : $count;
+        $count = ((defined('LEFT') && LEFT !== '') && ($this->left_off == FALSE)) ? $count + 1 : $count;
+        $count = ((defined('RIGHT') && RIGHT !== '') && ($this->right == TRUE)) ? $count + 1 : $count;
 
         if ($count > 0) {
             $this->sub_width_blaster = FALSE;
@@ -121,24 +117,6 @@ class Producer {
         if (file_exists($file_source)) {
             $this->css_file .= "<link rel='stylesheet' href='".$file_source."' media='screen' type='text/css'>";
         }
-    }
-
-    /**
-     * Inject html to right panel
-     *
-     * @param $html
-     */
-    public function add_to_right($html) {
-        $this->right_panel .= $html;
-    }
-
-    /**
-     * Inject html to left panel
-     *
-     * @param $html
-     */
-    public function add_to_left($html) {
-        $this->left_panel .= $html;
     }
 
     /**
@@ -306,23 +284,13 @@ class Producer {
                 ?>
                 <div class='overflow-hide'>
                     <?php
-                    if (in_array(START_PAGE, $this->crossover)) {
-                        if (function_exists('render_template')) {
-                            render_template();
-                        } else {
-                            opentable('');
-                            echo "This template is not supported";
-                            closetable();
-                        }
-                    } else {
                         echo CONTENT;
-                    }
                     ?>
                 </div>
             </div>
             <?php
-            if ((defined('RIGHT') && RIGHT != '' || $this->right_panel !== '') && ($this->right_off == FALSE)) {
-                echo "<div class='sidebar home col-xs-".$this->xs_width." col-sm-".$this->sm_width." col-md-".$this->md_width." col-lg-".$this->lg_width."'>".$this->right_panel.RIGHT."</div>";
+            if ((defined('RIGHT') && RIGHT !== '') && $this->right == TRUE) {
+                echo "<div class='sidebar home col-xs-".$this->xs_width." col-sm-".$this->sm_width." col-md-".$this->md_width." col-lg-".$this->lg_width."'>".RIGHT."</div>";
             }
 
             echo '<div class="clear"></div>';

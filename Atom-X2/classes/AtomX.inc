@@ -125,7 +125,7 @@ class AtomX extends Components {
 
                 echo '<div class="row">';
                     echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
-                        echo $this->locale['AX9_009'];
+                        echo '<i class="fa fa-rocket"></i> '.$this->locale['AX9_009'];
                         echo '<br/>'.$this->locale['AX9_010'];
                     echo '</div>';
                     echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">';

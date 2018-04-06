@@ -506,6 +506,11 @@ a:active {
     border-color: #1585D4;
 }
 
+#txt-message {
+    padding: 0;
+    margin: 0;
+}
+
 .btn {
     outline: none !important;
 }
@@ -621,10 +626,7 @@ a:active {
 .form-control,
 select {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    margin: 2px;
     border: 1px solid #CCC;
-    padding: 2px 4px;
     color: #777;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -854,6 +856,14 @@ blockquote {
 
 .select2-offscreen {
     display: none;
+}
+
+.maintenance {
+    height: 100vh;
+}
+
+.maintenance .jumbotron {
+    background-color: rgba(238, 238, 238, 0.35);
 }
 
 .col-xs-1-5 {

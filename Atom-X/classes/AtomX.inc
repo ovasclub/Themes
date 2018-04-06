@@ -29,7 +29,7 @@ class AtomX extends Components {
                 // Uncomment and edit, if you want show social networks in right top
                 /*echo '<div class="social-links">';
                     echo '<a href="https://github.com/php-fusion" target="_blank"><i class="fa fa-github"></i></a>';
-                    echo '<a href="https://www.facebook.com/phfusion" target="_blank"><i class="fa fa-facebook"></i></a>';
+                    echo '<a href="https://www.facebook.com/GenuineFusion" target="_blank"><i class="fa fa-facebook"></i></a>';
                     echo '<a href="https://twitter.com/PHPFusion" target="_blank"><i class="fa fa-twitter"></i></a>';
                 echo '</div>';*/
 
@@ -133,7 +133,7 @@ class AtomX extends Components {
 
                 echo '<div class="row">';
                     echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
-                        echo $this->locale['AX9_009'];
+                        echo '<i class="fa fa-rocket"></i> '.$this->locale['AX9_009'];
                         echo '<br/>'.$this->locale['AX9_010'];
                     echo '</div>';
                     echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-right">';
