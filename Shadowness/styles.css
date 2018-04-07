@@ -181,3 +181,7 @@ abbr {
     text-shadow: none !important;
     background-color: rgba(238, 238, 238, 0.84);
 }
+
+.overflow-hide {
+	background: rgba(0, 0, 0, .51) !important;
+}
