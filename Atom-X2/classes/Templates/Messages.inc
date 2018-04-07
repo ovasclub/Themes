@@ -52,7 +52,7 @@ class Messages extends Core {
         echo '<div class="row">';
             if (!isset($_GET['msg_send'])) {
                 echo '<div class="col-xs-12 col-sm-3">';
-                    echo '<a class="btn btn-primary btn-block" href="'.$info['button']['new']['link'].'"><i class="fa fa-plus"></i> '.$info['button']['new']['name'].'</a>';
+                    echo '<a class="btn btn-primary btn-block" href="'.$info['button']['new']['link'].'"><i class="fa fa-plus"></i> '.$locale['401'].'</a>';
 
                     $i = 0;
                     echo '<ul class="msg-nav list-style-none m-t-20">';
