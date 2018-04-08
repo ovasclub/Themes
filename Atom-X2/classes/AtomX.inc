@@ -52,7 +52,7 @@ class AtomX extends Components {
             echo '</div>';
 
             if (self::GetParam('section_header')) {
-                echo '<section class="section-block '.self::GetParam('section_header_class').'"><div class="container">';
+                echo '<section class="section-block '.self::GetParam('section_header_class').'"><div class="container-fluid">';
                     echo self::GetParam('section_header');
                 echo '</div></section>';
             }

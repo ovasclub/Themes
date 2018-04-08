@@ -66,6 +66,16 @@ class Profile extends Core {
                     }
                     echo '</div>';
                 }
+
+                if (!empty($info['user_admin'])) {
+                    $link = $info['user_admin'];
+                    echo '<div class="btn-group pull-right m-t-5">';
+                        echo '<a class="btn btn-default" href="'.$link['user_edit_link'].'">'.$link['user_edit_title'].'</a>';
+                        echo '<a class="btn btn-default" href="'.$link['user_ban_link'].'">'.$link['user_ban_title'].'</a>';
+                        echo '<a class="btn btn-default" href="'.$link['user_suspend_link'].'">'.$link['user_suspend_title'].'</a>';
+                        echo '<a class="btn btn-danger" href="'.$link['user_delete_link'].'">'.$link['user_delete_title'].'</a>';
+                    echo '</div>';
+                }
             echo '</div>';
         echo '</div></div>';
         $header = ob_get_contents();
@@ -321,7 +331,7 @@ class Profile extends Core {
                     if ($data['online_user'] == 0) {
                         $guests++;
                     } else {
-                        $members[] = [
+                        $members[$data['user_id']] = [
                             $data['user_id'],
                             $data['user_name'],
                             $data['user_status'],
@@ -330,8 +340,7 @@ class Profile extends Core {
                     }
                 }
 
-                $total_online = $guests + count($members);
-                $totalonline = Locale::format_word($total_online, $locale['fmt_user']);
+                $totalonline = Locale::format_word($guests + count($members), $locale['fmt_user']);
                 $members_online = Locale::format_word(count($members), $locale['fmt_member']);
                 $guests = Locale::format_word($guests, $locale['fmt_guest']);
 
@@ -342,7 +351,7 @@ class Profile extends Core {
                     echo '</div>';
 
                     echo '<div class="panel-body">';
-                        echo '<div><i class="fa fa-fw fa-2x fa-user"></i> <b>'.$locale['AX9_033'].'</b></div>';
+                        echo '<div><i class="fa fa-fw fa-user"></i> <b>'.$locale['AX9_033'].'</b></div>';
 
                         if (isset($settings['online_maxcount']) && isset($settings['online_maxtime'])) {
                             echo '<div class="m-b-5">'.str_replace(
@@ -353,17 +362,14 @@ class Profile extends Core {
                         }
 
                         if (count($members)) {
-                            $i = 1;
-                            foreach ($members as $key => $member) {
-                                echo profile_link($member[0], $member[1], $member[2], color($member[3]));
-                                echo $i != count($members) ? ', ' : '';
-                                $i++;
-                            }
+                            echo implode(', ', array_map(function ($member) {
+                                return profile_link($member[0], $member[1], $member[2], color($member[3]));
+                            }, $members));
                         }
                     echo '</div>';
 
                     echo '<div class="panel-footer">';
-                        echo '<div><i class="fa fa-fw fa-2x fa-users"></i> <b>'.$locale['AX9_035'].'</b></div>';
+                        echo '<div><i class="fa fa-fw fa-users"></i> <b>'.$locale['AX9_035'].'</b></div>';
                         // New members
                         $data = dbarray(dbquery("SELECT user_id, user_name, user_status
                             FROM ".DB_USERS." WHERE user_status='0' ORDER BY user_joined DESC LIMIT 0,1
@@ -382,7 +388,7 @@ class Profile extends Core {
                         echo '<hr/>';
 
                         $visited = number_format(dbcount("(user_id)", DB_USERS, "user_status<='1' AND user_lastvisit > UNIX_TIMESTAMP(CURDATE())"));
-                        $total_members = number_format(dbcount("(user_id)", DB_USERS));
+                        $total_members = number_format(dbcount("(user_id)", DB_USERS, "user_status<='1'"), 0);
                         echo '<div><b>'.$locale['AX9_041'].'</b><span class="pull-right">'.$visited.'/'.$total_members.'</span></div>';
 
                         $i = 0;
