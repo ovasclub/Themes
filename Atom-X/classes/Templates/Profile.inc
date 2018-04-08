@@ -162,11 +162,11 @@ class Profile extends Core {
                 }
 
                 if (!empty($field_info)) {
-                    echo '<div class="row profile-fields" id="extra-info">';
+                    echo '<div class="row profile-fields equal-height" id="extra-info">';
                     foreach ($field_info as $field_cat_id => $category_data) {
                         if (!empty($category_data['fields'])) {
                             echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
-                                echo '<div class="panel panel-default">';
+                                echo '<div class="panel panel-default" style="height: 100%;">';
                                     echo '<div class="panel-heading" style="background: #222;color: #fff;">'.$category_data['title'].'</div>';
 
                                     echo '<div class="panel-body">';
@@ -174,7 +174,7 @@ class Profile extends Core {
                                         foreach ($category_data['fields'] as $field_id => $field_data) {
                                             if ($field_data['value']) {
                                                 echo '<div id="field-'.$field_id.'" class="row">';
-                                                    echo '<label class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><strong>'.$field_data['title'].'</strong></label>';
+                                                    echo '<label class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><strong>'.(!empty($field_data['icon']) ? $field_data['icon'] : '').' '.$field_data['title'].'</strong></label>';
                                                     echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">'.$field_data['value'].'</div>';
                                                 echo '</div>';
                                             } else {
