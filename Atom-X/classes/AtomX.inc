@@ -147,7 +147,7 @@ class AtomX extends Components {
                     echo '</div>';
                 echo '</div>';
 
-                echo stripslashes(strip_tags($this->settings['footer']));
+                echo stripslashes($this->settings['footer']);
             echo '</div></footer>'; // #footer
         echo '</div>'; // .page-box
     }

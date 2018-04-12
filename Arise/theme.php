@@ -31,47 +31,47 @@ function render_page() {
     echo '<div class="main-container">';
         echo '<div id="header">';
             echo '<div class="clearfix">';
-            echo '<div class="logo pull-left"><a href="'.BASEDIR.$settings['opening_page'].'"><img src="'.BASEDIR.$settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
+                echo '<div class="logo pull-left"><a href="'.BASEDIR.$settings['opening_page'].'"><img src="'.BASEDIR.$settings['sitebanner'].'" alt="'.$settings['sitename'].'" class="img-responsive"/></a></div>';
 
-            if (HEADER_LINKS == TRUE) {
-                echo '<div id="header-links" class="pull-right">';
+                if (HEADER_LINKS == TRUE) {
+                    echo '<div id="header-links" class="pull-right">';
 
-                    $downloads = function_exists('infusion_exists') ? infusion_exists('downloads') : db_exists(DB_PREFIX.'downloads');
-                    if ($downloads) {
-                        if (!defined('DOWNLOAD_LOCALE')) {
-                            if (file_exists(INFUSIONS.'downloads/locale/'.LOCALESET.'downloads.php')) {
-                                define('DOWNLOAD_LOCALE', INFUSIONS.'downloads/locale/'.LOCALESET.'downloads.php');
-                            } else {
-                                define('DOWNLOAD_LOCALE', INFUSIONS.'downloads/locale/English/downloads.php');
+                        $downloads = function_exists('infusion_exists') ? infusion_exists('downloads') : db_exists(DB_PREFIX.'downloads');
+                        if ($downloads) {
+                            if (!defined('DOWNLOAD_LOCALE')) {
+                                if (file_exists(INFUSIONS.'downloads/locale/'.LOCALESET.'downloads.php')) {
+                                    define('DOWNLOAD_LOCALE', INFUSIONS.'downloads/locale/'.LOCALESET.'downloads.php');
+                                } else {
+                                    define('DOWNLOAD_LOCALE', INFUSIONS.'downloads/locale/English/downloads.php');
+                                }
                             }
+                            echo '<a class="link" href="'.INFUSIONS.'downloads/downloads.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/downloads.png" alt="'.fusion_get_locale('download_1000', DOWNLOAD_LOCALE).'"/><span>'.fusion_get_locale('download_1000', DOWNLOAD_LOCALE).'</span></a>';
                         }
-                        echo '<a class="link" href="'.INFUSIONS.'downloads/downloads.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/downloads.png" alt="'.fusion_get_locale('download_1000', DOWNLOAD_LOCALE).'"/><span>'.fusion_get_locale('download_1000', DOWNLOAD_LOCALE).'</span></a>';
-                    }
 
-                    $articles = function_exists('infusion_exists') ? infusion_exists('articles') : db_exists(DB_PREFIX.'articles');
-                    if ($articles) {
-                        echo '<a class="link" href="'.INFUSIONS.'articles/articles.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/articles.png" alt="'.fusion_get_locale('article_0000', ARTICLE_LOCALE).'"/><span>'.fusion_get_locale('article_0000', ARTICLE_LOCALE).'</span></a>';
-                    }
+                        $articles = function_exists('infusion_exists') ? infusion_exists('articles') : db_exists(DB_PREFIX.'articles');
+                        if ($articles) {
+                            echo '<a class="link" href="'.INFUSIONS.'articles/articles.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/articles.png" alt="'.fusion_get_locale('article_0000', ARTICLE_LOCALE).'"/><span>'.fusion_get_locale('article_0000', ARTICLE_LOCALE).'</span></a>';
+                        }
 
-                    $gallery = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
-                    if ($gallery) {
-                        echo '<a class="link" href="'.INFUSIONS.'gallery/gallery.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/gallery.png" alt="'.fusion_get_locale('465', GALLERY_LOCALE).'"/><span>'.fusion_get_locale('465', GALLERY_LOCALE).'</span></a>';
-                    }
+                        $gallery = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
+                        if ($gallery) {
+                            echo '<a class="link" href="'.INFUSIONS.'gallery/gallery.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/gallery.png" alt="'.fusion_get_locale('465', GALLERY_LOCALE).'"/><span>'.fusion_get_locale('465', GALLERY_LOCALE).'</span></a>';
+                        }
 
-                    $faq = function_exists('infusion_exists') ? infusion_exists('faq') : db_exists(DB_PREFIX.'faqs');
-                    if ($faq) {
-                        echo '<a class="link" href="'.INFUSIONS.'faq/faq.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/faq.png" alt="'.fusion_get_locale('faq_0000', FAQ_LOCALE).'"/><span>'.fusion_get_locale('faq_0000', FAQ_LOCALE).'</span></a>';
-                    }
+                        $faq = function_exists('infusion_exists') ? infusion_exists('faq') : db_exists(DB_PREFIX.'faqs');
+                        if ($faq) {
+                            echo '<a class="link" href="'.INFUSIONS.'faq/faq.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/faq.png" alt="'.fusion_get_locale('faq_0000', FAQ_LOCALE).'"/><span>'.fusion_get_locale('faq_0000', FAQ_LOCALE).'</span></a>';
+                        }
 
-                    $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
-                    if ($forum) {
-                        echo '<a class="link" href="'.INFUSIONS.'forum/index.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/forum.png" alt="'.fusion_get_locale('forum_0001', FORUM_LOCALE).'"/><span>'.fusion_get_locale('forum_0001', FORUM_LOCALE).'</span></a>';
-                    }
+                        $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
+                        if ($forum) {
+                            echo '<a class="link" href="'.INFUSIONS.'forum/index.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/forum.png" alt="'.fusion_get_locale('forum_0001', FORUM_LOCALE).'"/><span>'.fusion_get_locale('forum_0001', FORUM_LOCALE).'</span></a>';
+                        }
 
-                    $contact = !empty(fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php')) ? fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php') : fusion_get_locale('400', LOCALE.LOCALESET.'contact.php');
-                    echo '<a class="link m-r-0" href="'.BASEDIR.'contact.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/contact.png" alt="'.$contact.'"/><span>'.$contact.'</span></a>';
-                echo '</div>';
-            }
+                        $contact = !empty(fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php')) ? fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php') : fusion_get_locale('400', LOCALE.LOCALESET.'contact.php');
+                        echo '<a class="link m-r-0" href="'.BASEDIR.'contact.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/contact.png" alt="'.$contact.'"/><span>'.$contact.'</span></a>';
+                    echo '</div>';
+                }
             echo '</div>';
 
             echo showsublinks('', 'navbar-default', [
@@ -138,8 +138,7 @@ function render_page() {
             echo '</div>';
 
             echo showFooterErrors();
-
-        echo '</div>'; // #main-content
+        echo '</div>'; // #main-box
 
         echo '<footer id="main-footer" class="text-center">';
             echo '<div class="footer">';
@@ -153,18 +152,17 @@ function render_page() {
             echo '</div>';
 
             echo '<div class="copyright">';
-                echo stripslashes(strip_tags($settings['footer'])).'<br/>';
+                echo stripslashes($settings['footer']).'<br/>';
                 echo showcopyright();
                 echo showprivacypolicy();
             echo '</div>';
         echo '</footer>';
-
-    echo '</div>';
+    echo '</div>'; // .main-container
 }
 
 function opentable($title = FALSE, $class = '') {
     echo '<div class="opentable box panel panel-default '.$class.'">';
-    echo '<div class="panel-heading">'.$title.'</div>';
+    echo !empty($title) ? '<div class="panel-heading">'.$title.'</div>' : '';
     echo '<div class="panel-body">';
 }
 

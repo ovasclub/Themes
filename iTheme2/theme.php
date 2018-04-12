@@ -28,116 +28,112 @@ function render_page() {
     $settings = fusion_get_settings();
 
     echo '<div class="container">';
-    echo '<div id="header">';
-    echo '<div class="clearfix">';
-    echo '<div class="logo pull-left"><a href="'.BASEDIR.$settings['opening_page'].'"><img src="'.BASEDIR.$settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
+        echo '<div id="header">';
+            echo '<div class="clearfix">';
+                echo '<div class="logo pull-left"><a href="'.BASEDIR.$settings['opening_page'].'"><img src="'.BASEDIR.$settings['sitebanner'].'" alt="'.$settings['sitename'].'" class="img-responsive"/></a></div>';
+            echo '</div>';
 
-    echo '</div>';
-
-    echo showsublinks('', 'navbar-default', [
-        'id'          => 'main-nav',
-        'show_header' => TRUE,
-        'searchbar'   => TRUE
-    ]);
-    echo '</div>';
-
-    echo '<div id="main-box">';
-    echo renderNotices(getNotices(['all', FUSION_SELF]));
-
-    echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
-    echo showbanners(1);
-
-    echo '<div class="row">';
-    $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
-    $right = ['sm' => 3, 'md' => 3, 'lg' => 3];
-
-    if (defined('RIGHT') && RIGHT) {
-        $content['sm'] = $content['sm'] - $right['sm'];
-        $content['md'] = $content['md'] - $right['md'];
-        $content['lg'] = $content['lg'] - $right['lg'];
-    }
-
-    $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
-    echo '<div class="col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
-    echo '<div id="content">';
-    echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
-
-    echo CONTENT;
-
-    echo defined('L_CENTER') && L_CENTER ? L_CENTER : '';
-
-    echo showbanners(2);
-
-    echo '</div>';
-    echo '</div>';
-
-    if (defined('RIGHT') && RIGHT || defined('LEFT') && LEFT) {
-        echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].' col-md-'.$right['md'].' col-lg-'.$right['lg'].'">';
-        if (defined('RIGHT') && RIGHT) {
-            echo RIGHT;
-        }
-        if (defined('LEFT') && LEFT) {
-            echo LEFT;
-        }
+            echo showsublinks('', 'navbar-default', [
+                'id'          => 'main-nav',
+                'show_header' => TRUE,
+                'searchbar'   => TRUE
+            ]);
         echo '</div>';
-    }
 
-    echo '</div>';
+        echo '<div id="main-box">';
+            echo renderNotices(getNotices(['all', FUSION_SELF]));
 
-    echo defined('BL_CENTER') && BL_CENTER ? BL_CENTER : '';
+            echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
+            echo showbanners(1);
 
-    echo '<div class="row m-t-10">';
-    echo defined('USER1') && USER1 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER1.'</div>' : '';
-    echo defined('USER2') && USER2 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER2.'</div>' : '';
-    echo defined('USER3') && USER3 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER3.'</div>' : '';
-    echo defined('USER4') && USER4 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER4.'</div>' : '';
-    echo '</div>';
+            echo '<div class="row">';
+                $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
+                $right = ['sm' => 3, 'md' => 3, 'lg' => 3];
 
-    echo showFooterErrors();
+                if (defined('RIGHT') && RIGHT) {
+                    $content['sm'] = $content['sm'] - $right['sm'];
+                    $content['md'] = $content['md'] - $right['md'];
+                    $content['lg'] = $content['lg'] - $right['lg'];
+                }
 
-    echo '</div>'; // #main-content
+                $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
+                echo '<div class="col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
+                    echo '<div id="content">';
+                        echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
 
-    echo '<footer id="main-footer" class="text-left">';
-    echo '<div class="row copyright">';
+                        echo CONTENT;
 
-    echo '<div class="col-xs-12 col-sm-6">';
-    echo showcopyright();
-    echo '<br/>Theme by <a href="https://themify.me">Themify.me</a>. Converted to PHP-Fusion by: Khalid';
-    echo '<br/>Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
-    echo '</div>';
-    echo '<div class="col-xs-12 col-sm-6">';
-    echo stripslashes(strip_tags($settings['footer'])).'<br/>';
-    echo showprivacypolicy();
-    echo '</div>';
-    echo '</div>';
-    echo '</footer>';
+                        echo defined('L_CENTER') && L_CENTER ? L_CENTER : '';
 
-    echo '</div>';
+                        echo showbanners(2);
+                    echo '</div>';
+                echo '</div>';
 
-    if ($settings['rendertime_enabled'] == 1 || ($settings['rendertime_enabled'] == 2 && iADMIN)) {
-        echo  "<div id='debug'>".showrendertime(). "</div>";
+                if (defined('RIGHT') && RIGHT || defined('LEFT') && LEFT) {
+                    echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].' col-md-'.$right['md'].' col-lg-'.$right['lg'].'">';
+                        echo defined('RIGHT') && RIGHT ? RIGHT : '';
+                        echo defined('LEFT') && LEFT ? LEFT : '';
+                    echo '</div>';
+                }
+            echo '</div>';
+
+            echo defined('BL_CENTER') && BL_CENTER ? BL_CENTER : '';
+
+            echo '<div class="row m-t-10">';
+                echo defined('USER1') && USER1 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER1.'</div>' : '';
+                echo defined('USER2') && USER2 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER2.'</div>' : '';
+                echo defined('USER3') && USER3 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER3.'</div>' : '';
+                echo defined('USER4') && USER4 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER4.'</div>' : '';
+            echo '</div>';
+
+            echo showFooterErrors();
+        echo '</div>'; // #main-box
+
+        echo '<footer id="main-footer" class="text-left">';
+            echo '<div class="row copyright">';
+                echo '<div class="col-xs-12 col-sm-6">';
+                    echo showcopyright();
+                    echo '<br/>Theme by <a href="https://themify.me">Themify.me</a>. Converted to PHP-Fusion by: Khalid';
+                    echo '<br/>Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+                echo '</div>';
+                echo '<div class="col-xs-12 col-sm-6">';
+                    echo stripslashes($settings['footer']).'<br/>';
+                    echo showprivacypolicy();
+                echo '</div>';
+            echo '</div>';
+        echo '</footer>';
+    echo '</div>'; // .container
+
+    if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {
+        echo '<div id="debug">';
+            echo showrendertime();
+            echo showMemoryUsage();
+        echo '</div>';
     }
 }
 
 function opentable($title) {
-    echo "<div class='post'>\n";
-    echo "<h2 class='ttitle'>".$title."</h2>\n";
+    echo '<div class="post">';
+    echo !empty($title) ? '<h2 class="ttitle">'.$title.'</h2>' : '';
 }
 
 function closetable() {
-    echo "</div>\n";
+    echo '</div>';
 }
 
 function openside($title, $collapse = FALSE, $state = 'on') {
     global $panel_collapse;
     $boxname = '';
     $panel_collapse = $collapse;
-    echo "<div class='widgetwrap widget'>\n";
-    echo "<h4 class='widgettitle'>".$title."</h4>\n";
+
+    echo '<div class="widgetwrap widget">';
+    echo !empty($title) ? '<h4 class="widgettitle">'.$title.'</h4>' : '';
+
     if ($collapse == TRUE) {
-        $boxname = str_replace(" ", "", $title);
-        echo "<div class='panel-button'>".panelbutton($state, $boxname)."</div>\n";
+        $boxname = str_replace(' ', '', $title);
+        echo '<div class="panel-button">'.panelbutton($state, $boxname).'</div>';
     }
+
     if ($collapse == TRUE) {
         echo panelstate($state, $boxname);
     }
@@ -145,8 +141,10 @@ function openside($title, $collapse = FALSE, $state = 'on') {
 
 function closeside() {
     global $panel_collapse;
+
     if ($panel_collapse == TRUE) {
-        echo "</div>\n";
+        echo '</div>';
     }
-    echo "</div>\n";
+
+    echo '</div>';
 }
