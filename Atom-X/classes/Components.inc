@@ -58,7 +58,7 @@ class Components extends Core {
                     echo '</li></ul>';
                 echo '</li></ul></li>'; // .info-bar-dropdown
 
-                echo '<li class="user-icon"><a href="'.BASEDIR.'profile.php?lookup='.$this->userdata['user_id'].'"><i class="fa fa-2x icon fa-user"></i></a></li>';
+                echo '<li class="user-icon"><a href="'.BASEDIR.'profile.php?lookup='.$this->userdata['user_id'].'"><i class="fa icon fa-user"></i></a></li>';
 
                 $msg_count = dbcount(
                     "('message_id')",
@@ -68,11 +68,11 @@ class Components extends Core {
 
                 $messages_count = '';
                 if ($msg_count > 0) {
-                    $messages_count = '<span class="label label-danger m-l-5" style="position: absolute;top: 3px;right: 25px;">'.$msg_count.'</span>';
+                    $messages_count = '<span class="msg-count label label-danger m-l-5">'.$msg_count.'</span>';
                 }
 
                 echo '<li><ul class="info-bar-dropdown list-style-none"><li class="dropdown">';
-                    echo '<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-2x icon fa-envelope"></i>'.$messages_count.' <span class="caret"></span></a>';
+                    echo '<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa icon fa-envelope"></i>'.$messages_count.' <span class="caret"></span></a>';
                     echo '<ul class="dropdown-menu" style="width: 280px;padding-top: 0;">';
                         echo '<li class="mailbox">';
                             echo '<strong><a href="'.BASEDIR.'messages.php">'.$this->locale['AX9_005'].'</a></strong>';
@@ -99,7 +99,7 @@ class Components extends Core {
                 echo '</li></ul></li>'; // .info-bar-dropdown
 
                 echo '<li><ul class="info-bar-dropdown list-style-none"><li class="dropdown">';
-                    echo '<a class="dropdown-toggle" style="border-right: 1px solid rgba(0,0,0,0.23);" data-toggle="dropdown" href="#"><i class="fa fa-2x icon fa-users"></i> <span class="caret"></span></a>';
+                    echo '<a class="dropdown-toggle" style="border-right: 1px solid rgba(0,0,0,0.23);" data-toggle="dropdown" href="#"><i class="fa icon fa-users"></i> <span class="caret"></span></a>';
                     echo '<ul class="dropdown-menu" style="width: 250px;">';
                         echo '<li class="dropdown-header"><b>'.$this->locale['u057'].'</b></li>';
 

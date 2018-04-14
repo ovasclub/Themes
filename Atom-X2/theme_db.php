@@ -28,6 +28,3 @@ $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';
 $theme_version = '1.01';
 $theme_folder = 'Atom-X2';
-
-$theme_insertdbrow[] = DB_SETTINGS_THEME." (settings_name, settings_value, settings_theme) VALUES ('enable_last_seen_users_x2', 1, '".$theme_folder."');";
-$theme_deldbrow[] = DB_SETTINGS_THEME." WHERE settings_theme='".$theme_folder."'";

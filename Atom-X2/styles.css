@@ -116,6 +116,8 @@ a:active {
 .atom-x-subnav .nav > li > a:focus,
 .atom-x-subnav .nav > li > a:active,
 .atom-x-subnav .nav > li.active > a,
+.atom-x-subnav .nav > li.active > a:hover,
+.atom-x-subnav .nav > li.active > a:focus,
 .atom-x-subnav .nav > li.open > a,
 .atom-x-subnav .nav > li.open > a:hover,
 .atom-x-subnav .nav > li.open > a:focus {
@@ -149,6 +151,17 @@ a:active {
     width: 98%;
 }
 
+@media (max-width: 767px) {
+    .atom-x-subnav .nav .open .dropdown-menu > .active > a {
+        color: #1585D4;
+    }
+
+    .atom-x-subnav .nav .open .dropdown-menu > .active > a:hover,
+    .atom-x-subnav .nav .open .dropdown-menu > .active > a:focus {
+        color: #15579c;
+    }
+}
+
 .user-info-bar {
     background: #121A23 none repeat center center;
     color: #646668;
@@ -180,6 +193,11 @@ a:active {
     height: 60px;
 }
 
+.user-info-bar > li > a .icon,
+.user-info-bar .info-bar-dropdown > li > a .icon {
+    font-size: 20px;
+}
+
 .user-info-bar > li:last-child > a {
     border-right: 1px solid rgba(0, 0, 0, 0.23);
 }
@@ -203,6 +221,12 @@ a:active {
 
 .user-info-bar .dropdown-menu {
     color: #333;
+}
+
+.user-info-bar .msg-count {
+    position: absolute;
+    top: 5px;
+    right: 20px;
 }
 
 .user-info-bar .mailbox {

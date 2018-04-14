@@ -22,8 +22,6 @@ require_once INCLUDES."theme_functions_include.php";
  * Class Producer
  */
 class Producer {
-    private $css_file = '';
-
     /* Theme properties */
     public $display_mode = 'full-grid'; // canvas for photo albums, //
     public $max_width = FALSE;
@@ -106,17 +104,6 @@ class Producer {
     public function __construct() {
         define('THEME_BULLET', "&middot;");
         define('THEME_LOCALE', THEME.'templates/locale/'.LOCALESET);
-    }
-
-    /**
-     * Drop the css file url into this container in your custom template to add them.
-     *
-     * @param $file_source
-     */
-    public function add_css_file($file_source) {
-        if (file_exists($file_source)) {
-            $this->css_file .= "<link rel='stylesheet' href='".$file_source."' media='screen' type='text/css'>";
-        }
     }
 
     /**
@@ -483,7 +470,6 @@ class Producer {
     }
 
     public function render_page() {
-        add_to_head($this->css_file);
         self::display_header();
         self::display_content();
         self::display_footer();
@@ -495,7 +481,6 @@ $theme->template_loader();
 
 function render_page() {
     global $theme;
-    $theme->add_css_file(THEME.'base-rev1.css');
     $theme->render_page();
 }
 
