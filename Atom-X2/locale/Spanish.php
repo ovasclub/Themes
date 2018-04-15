@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: Atom-X/locale/Spanish.php
+| Filename: Atom-X2/locale/Spanish.php
 | Author: Talocha
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -23,7 +23,7 @@ $locale['AX9_005'] = 'Mi buzón';
 $locale['AX9_006'] = 'No tienes mensajes sin leer.';
 $locale['AX9_007'] = 'Ir a mi buzón';
 $locale['AX9_008'] = 'No se encontraron grupos';
-$locale['AX9_009'] = 'Atom-X para PHP-Fusion v9<br/>'.date('Y').' Todos los derechos reservados.';
+$locale['AX9_009'] = 'Atom-X2 para PHP-Fusion v9<br/>'.date('Y').' Todos los derechos reservados.';
 $locale['AX9_010'] = 'Tema diseñado por <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, Portado para v9 por <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Página de perfil: ';
 $locale['AX9_012'] = 'Correo electrónico oculto';

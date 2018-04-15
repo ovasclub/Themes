@@ -25,10 +25,14 @@ require_once INCLUDES.'theme_functions_include.php';
 define('THEME_BULLET', '&middot;');
 define('HEADER_LINKS', TRUE);
 
+// Settings for 2 columns layout
+define('ARISE_2COL', FALSE); // Set TRUE to enable
+define('ARISE_SIDE', 'LEFT'); // Keep LEFT or RIGHT side
+
 function render_page() {
     $settings = fusion_get_settings();
 
-    echo '<div class="main-container">';
+    echo '<div class="container">';
         echo '<div id="header">';
             echo '<div class="clearfix">';
                 echo '<div class="logo pull-left"><a href="'.BASEDIR.$settings['opening_page'].'"><img src="'.BASEDIR.$settings['sitebanner'].'" alt="'.$settings['sitename'].'" class="img-responsive"/></a></div>';
@@ -92,26 +96,48 @@ function render_page() {
                 $left    = ['sm' => 3,  'md' => 2,  'lg' => 2];
                 $right   = ['sm' => 3,  'md' => 2,  'lg' => 2];
 
-                if (defined('LEFT') && LEFT) {
+                $left_side = TRUE;
+                $right_side = TRUE;
+                $half_grid = TRUE;
+                $no_padding = 'p-l-0 p-r-0 ';
+                if (ARISE_2COL == TRUE) {
+                    $left_side = ARISE_SIDE == 'LEFT' ? TRUE : FALSE;
+                    $right_side = ARISE_SIDE == 'RIGHT' ? TRUE : FALSE;
+                    $half_grid = FALSE;
+                    $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
+                    $left    = ['sm' => 3,  'md' => 2,  'lg' => 3];
+                    $right   = ['sm' => 3,  'md' => 2,  'lg' => 3];
+                    $no_padding = $left_side == TRUE ? 'p-l-0 ' : 'p-r-0 ';
+                }
+
+                $half_column = '';
+                $side = '';
+
+                if ($half_grid == TRUE) {
+                    $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
+                    $side = '-5';
+                }
+
+                if ((defined('LEFT') && LEFT) && $left_side == TRUE) {
                     $content['sm'] = $content['sm'] - $left['sm'];
                     $content['md'] = $content['md'] - $left['md'];
                     $content['lg'] = $content['lg'] - $left['lg'];
                 }
 
-                if (defined('RIGHT') && RIGHT) {
+                if ((defined('RIGHT') && RIGHT) && $right_side == TRUE) {
                     $content['sm'] = $content['sm'] - $right['sm'];
                     $content['md'] = $content['md'] - $right['md'];
                     $content['lg'] = $content['lg'] - $right['lg'];
                 }
 
-                if (defined('LEFT') && LEFT) {
-                    echo '<div id="left-side" class="col-xs-12 col-sm-'.$left['sm'].'-5 col-md-'.$left['md'].'-5 col-lg-'.$left['lg'].'-5">';
-                        echo LEFT;
+                if ((defined('LEFT') && LEFT) && $left_side == TRUE) {
+                    echo '<div id="left-side" class="col-xs-12 col-sm-'.$left['sm'].$side.' col-md-'.$left['md'].$side.' col-lg-'.$left['lg'].$side.'">';
+                        echo defined('RIGHT') && RIGHT && $right_side == FALSE ? RIGHT : '';
+                        echo defined('LEFT') && LEFT ? LEFT : '';
                     echo '</div>';
                 }
 
-                $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
-                echo '<div id="main-content" class="col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
+                echo '<div id="main-content" class="'.$no_padding.'col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
                     echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
 
                     echo CONTENT;
@@ -121,9 +147,11 @@ function render_page() {
                     echo showbanners(2);
                 echo '</div>';
 
-                if (defined('RIGHT') && RIGHT) {
-                    echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].'-5 col-md-'.$right['md'].'-5 col-lg-'.$right['lg'].'-5">';
-                        echo RIGHT;
+                if ((defined('RIGHT') && RIGHT) && $right_side == TRUE) {
+                    echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].$side.' col-md-'.$right['md'].$side.' col-lg-'.$right['lg'].$side.'">';
+                        echo defined('RIGHT') && RIGHT ? RIGHT : '';
+
+                        echo defined('LEFT') && LEFT && $left_side == FALSE ? LEFT : '';
                     echo '</div>';
                 }
             echo '</div>';
@@ -141,7 +169,7 @@ function render_page() {
         echo '</div>'; // #main-box
 
         echo '<footer id="main-footer" class="text-center">';
-            echo '<div class="footer">';
+            echo '<div class="footer clearfix">';
                 echo '<span class="pull-left">Arise Theme by <a href="https://www.php-fusion.co.uk" target="_blank">J. Falk (Falk)</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a></span>';
 
                 if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {

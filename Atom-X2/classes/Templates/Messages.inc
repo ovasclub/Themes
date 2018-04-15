@@ -113,7 +113,7 @@ class Messages extends Core {
             echo '<div class="m-b-20">';
                 echo display_avatar($data, '40px', '', FALSE, 'img-rounded pull-left m-t-5 m-r-10');
                 echo profile_link($data['user_id'], $data['user_name'], $data['user_status'],'display-block');
-                echo '<span>'.showdate($locale['date_day'], $data['message_datestamp']).', '.timer($data['message_datestamp']).'</span>';
+                echo '<span>'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $data['message_datestamp']).', '.timer($data['message_datestamp']).'</span>';
             echo '</div>';
 
             echo nl2br(parse_textarea($data['message']['message_text'], TRUE, TRUE, FALSE));
@@ -144,7 +144,7 @@ class Messages extends Core {
 
                 if ($is_inbox) {
                     // Inbox
-                    echo '<h4><a data-target="#unread_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['446'].'</a></h4>';
+                    echo '<h4><a data-target="#unread_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['446'].' <span class="caret"></span></a></h4>';
                     echo '<div id="unread_inbox" class="collapse in">';
                         if (!empty($unread)) {
                             echo '<div class="table-responsive"><table id="unread_tbl" class="table table-hover table-striped">';
@@ -157,7 +157,7 @@ class Messages extends Core {
                                         ]).'</td>';
                                         echo '<td class="col-xs-2"><b>'.$messageData['contact_user']['user_name'].'</b></td>';
                                         echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'"><b>'.$messageData['message']['name'].'</b></a></td>';
-                                        echo '<td class="col-xs-2">'.showdate($locale['date_day'], $messageData['message_datestamp']).'</td>';
+                                        echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
                                     echo '</tr>';
                                 }
                             echo '</table></div>';
@@ -166,7 +166,7 @@ class Messages extends Core {
                         }
                     echo '</div>';
 
-                    echo '<h4><a data-target="#read_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['447'].'</a></h4>';
+                    echo '<h4><a data-target="#read_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['447'].' <span class="caret"></span></a></h4>';
                     echo '<div id="read_inbox" class="collapse in">';
                         if (!empty($read)) {
                             echo '<div class="table-responsive"><table id="read_tbl" class="table table-hover table-striped">';
@@ -179,7 +179,7 @@ class Messages extends Core {
                                         ]).'</td>';
                                         echo '<td class="col-xs-2">'.$messageData['contact_user']['user_name'].'</td>';
                                         echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'">'.$messageData['message']['name'].'</a></td>';
-                                        echo '<td class="col-xs-2">'.showdate($locale['date_day'], $messageData['message_datestamp']).'</td>';
+                                        echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
                                     echo '</tr>';
                                 }
                             echo '</table></div>';
@@ -198,7 +198,7 @@ class Messages extends Core {
                                     ]).'</td>';
                                     echo '<td class="col-xs-2">'.$messageData['contact_user']['user_name'].'</td>';
                                     echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'">'.$messageData['message']['name'].'</a></td>';
-                                    echo '<td class="col-xs-2">'.showdate($locale['date_day'], $messageData['message_datestamp']).'</td>';
+                                    echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
                                 echo '</tr>';
                             }
                         echo '</table></div>';

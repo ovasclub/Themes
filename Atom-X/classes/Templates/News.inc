@@ -37,6 +37,7 @@ class News extends Core {
                     $i = 0;
                     foreach ($info['news_items'] as $id => $data) {
                         $i++;
+                        $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
 
                         echo '<div class="panel panel-default">';
                             echo '<div class="panel-heading p-0 news-image overflow-hide">'.$data['news_image'].'</div>';
@@ -69,6 +70,8 @@ class News extends Core {
                     $news_items = array_slice($info['news_items'], 4, NULL, TRUE);
                     $i = 0;
                     foreach ($news_items as $id => $data) {
+                        $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
+
                         echo '<div class="m-t-10 m-b-10"'.($i > 0 ? ' style="border-top: 1px dashed #ccc;"' : '').'>';
                             echo '<h4 class="m-b-10"><a class="text-dark text-underline" href="'.$data['news_link'].'"><b>'.$data['news_subject'].'</b></a></h4>';
                             echo '<div class="clearfix m-b-10">';
@@ -151,18 +154,27 @@ class News extends Core {
             echo '<div class="m-r-5 display-inline"><a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a></div>';
         }
 
-        echo '<div class="news-image-main m-t-20 overflow-hide">'.$data['news_image'].'</div>';
+        if ($data['news_image_align'] == 'news-img-center') {
+            echo '<div class="news-image-main m-t-20 overflow-hide">'.$data['news_image'].'</div>';
+        }
 
         echo '<div class="row m-t-20">';
             echo '<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">';
-                echo display_avatar($data, '50px', '', TRUE, 'img-rounded pull-right');
+                echo display_avatar($data, '50px', '', TRUE, 'img-rounded pull-right m-l-5');
                 echo '<div class="pull-right text-uppercase m-t-5">'.$locale['AX9_050'].profile_link($data['user_id'], $data['user_name'], $data['user_status']).'</div>';
                 echo'<div class="pull-right text-uppercase m-t-5 p-t-5" style="border-top: 1px solid #ccc;">'.showdate('newsdate', $data['news_datestamp']).'</div>';
             echo '</div>';
 
             echo '<div class=" col-xs-12 col-sm-10 col-md-10 col-lg-10">';
+                $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
                 echo '<div class="text-uppercase m-b-20">'.$locale['AX9_051'].'<a href="'.$data['news_cat_link'].'">'.$data['news_cat_name'].'</a></div>';
+
+                if ($data['news_image_align'] == 'pull-left' || $data['news_image_align'] == 'pull-right') {
+                    echo '<div class="'.$data['news_image_align'].' m-r-10" style="max-width: 250px;">'.$data['news_image'].'</div>';
+                }
+
                 echo $data['news_news'];
+                echo !empty($data['news_extended']) ? '<p class="m-t-10">'.$data['news_extended'].'</p>' : '';
 
                 echo '<hr/>'.$data['news_show_comments'];
             echo '</div>';

@@ -95,7 +95,7 @@ class AtomX extends Components {
 
                 if (defined('RIGHT') && RIGHT && $this->GetParam('right') == TRUE || $this->GetParam('right_content')) {
                     echo '<div class="col-xs-12 col-sm-'.$right['sm'].'-5 col-md-'.$right['md'].'-5 col-lg-'.$right['lg'].'-5">';
-                        if ($this->GetParam('right') == TRUE && defined('RIGHT') && RIGHT) echo RIGHT;
+                        echo ($this->GetParam('right') == TRUE && defined('RIGHT') && RIGHT) ? RIGHT : '';
 
                         echo $this->GetParam('right_content');
                     echo '</div>';

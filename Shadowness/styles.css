@@ -502,7 +502,6 @@ span.shout img {
     background-color: rgba(0, 0, 0, .8);
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, .1);
-    max-width: 961px;
     margin: 25px auto;
     position: relative;
 }
@@ -4118,4 +4117,126 @@ input[type='image']:hover {
 
 .nav > li > a:hover, .nav > li > a:focus {
     background-color: #0a0a0a;
+}
+
+#news-nav.navbar-default {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+#news-nav.navbar-default .navbar-brand {
+    color: #777777;
+}
+
+#news-nav.navbar-default .navbar-brand:hover,
+#news-nav.navbar-default .navbar-brand:focus {
+    color: #5e5e5e;
+    background-color: transparent;
+}
+
+#news-nav.navbar-default .navbar-text {
+    color: #777777;
+}
+
+#news-nav.navbar-default .navbar-nav > li > a {
+    color: #777777;
+}
+
+#news-nav.navbar-default .navbar-nav > li > a:hover,
+#news-nav.navbar-default .navbar-nav > li > a:focus {
+    color: #333333;
+    background-color: transparent;
+}
+
+#news-nav.navbar-default .navbar-nav > .active > a,
+#news-nav.navbar-default .navbar-nav > .active > a:hover,
+#news-nav.navbar-default .navbar-nav > .active > a:focus {
+    color: #555555;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#news-nav.navbar-default .navbar-nav > .disabled > a,
+#news-nav.navbar-default .navbar-nav > .disabled > a:hover,
+#news-nav.navbar-default .navbar-nav > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+#news-nav.navbar-default .navbar-toggle {
+    border-color: #dddddd;
+}
+
+#news-nav.navbar-default .navbar-toggle:hover,
+#news-nav.navbar-default .navbar-toggle:focus {
+    background-color: #dddddd;
+}
+
+#news-nav.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888888;
+}
+
+#news-nav.navbar-default .navbar-collapse,
+#news-nav.navbar-default .navbar-form {
+    border-color: rgba(0, 0, 0, 0.9);
+}
+
+#news-nav.navbar-default .navbar-nav > .open > a,
+#news-nav.navbar-default .navbar-nav > .open > a:hover,
+#news-nav.navbar-default .navbar-nav > .open > a:focus {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #555555;
+}
+
+@media (max-width: 767px) {
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777777;
+    }
+
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333333;
+        background-color: transparent;
+    }
+
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #555555;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    #news-nav.navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #cccccc;
+        background-color: transparent;
+    }
+}
+
+#news-nav.navbar-default .navbar-link {
+    color: #777777;
+}
+
+#news-nav.navbar-default .navbar-link:hover {
+    color: #333333;
+}
+
+#news-nav.navbar-default .btn-link {
+    color: #777777;
+}
+
+#news-nav.navbar-default .btn-link:hover,
+#news-nav.navbar-default .btn-link:focus {
+    color: #333333;
+}
+
+#news-nav.navbar-default .btn-link[disabled]:hover,
+fieldset[disabled] #news-nav.navbar-default .btn-link:hover,
+#news-nav.navbar-default .btn-link[disabled]:focus,
+fieldset[disabled] #news-nav.navbar-default .btn-link:focus {
+    color: #cccccc;
+}
+
+#news-nav .dropdown-menu > li > a {
+    color: #cecece;
 }

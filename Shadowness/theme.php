@@ -23,7 +23,7 @@ require_once INCLUDES."theme_functions_include.php";
  */
 class Producer {
     /* Theme properties */
-    public $display_mode = 'full-grid'; // canvas for photo albums, //
+    public $display_mode = 'full-grid'; // canvas for photo albums
     public $max_width = FALSE;
     public $show_menu = TRUE;
     public $sub_width_blaster = TRUE;
@@ -257,8 +257,8 @@ class Producer {
                 $main_container_css = 'main full';
         }
         $main_container_css .= " ".self::get_main_span();
-        ?>
 
+        echo $this->max_width ? "" : $this->display_mode == 'single' ? "" : '<div class="container">'; ?>
         <div class='wrapper row equalize' <?php echo $this->max_width ? "style='width:95%'" : $this->display_mode == 'single' ? "style='max-width:640px'" : '' ?>>
             <?php
             echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
@@ -277,7 +277,10 @@ class Producer {
             </div>
             <?php
             if ((defined('RIGHT') && RIGHT !== '') && $this->right == TRUE) {
-                echo "<div class='sidebar home col-xs-".$this->xs_width." col-sm-".$this->sm_width." col-md-".$this->md_width." col-lg-".$this->lg_width."'>".RIGHT."</div>";
+                echo "<div class='sidebar home col-xs-".$this->xs_width." col-sm-".$this->sm_width." col-md-".$this->md_width." col-lg-".$this->lg_width."'>";
+                    echo RIGHT;
+                    echo defined('LEFT') && LEFT ? LEFT : '';
+                echo "</div>";
             }
 
             echo '<div class="clear"></div>';
@@ -294,7 +297,8 @@ class Producer {
             }
             ?>
         </div>
-        <?php
+
+        <?php echo $this->max_width ? "" : $this->display_mode == 'single' ? "" : '</div>';
 
         echo '<div class="text-center">';
         echo showFooterErrors();
@@ -518,47 +522,6 @@ function tablebreak() {
 function closetable() {
     global $theme;
     $theme->closetable();
-}
-
-function render_comments($c_data, $c_info) {
-    global $locale, $settings;
-    ?>
-    <div class='comments'>
-    <?php
-    if (!empty($c_data)) {
-        if (iMEMBER) {
-            if ($c_info['admin_link'] !== FALSE) {
-                echo "<li class='submit'>".$c_info['admin_link']."</li>";
-            }
-        } else {
-            echo "<li class='submit'>You need to be <a href='".BASEDIR."login.php'>Logged in</a> to post a comment.</li>";
-        }
-        foreach ($c_data as $data) {
-            ?>
-            <!--comments_#<?php echo $data['comment_id']; ?>-->
-            <li class='removeParent' id='c<?php echo $data['comment_id']; ?>'>
-                <?php
-                echo ($settings['comments_avatar']) ? "<a href='".BASEDIR."profile.php?lookup=".$data['user']['user_id']."' class='avatar' style='background-image: url(".$data['user']['user_avatar'].");' title='Visit ".$data['user']['user_name']."'>".$data['user']['user_name']."</a>" : "";
-                ?>
-                <div class='text'>
-                    <h3><?php echo $data['comment_name']; ?></h3>
-                    <p><?php echo $data['comment_message']; ?></p>
-                    <small>
-                        <?php
-                        echo "<a href='".FUSION_REQUEST."#c".$data['comment_id']."'>".$data['comment_datestamp']."</a>\n ";
-                        if ($data['edit_dell'] !== FALSE) {
-                            echo "<span class='comment_actions'>&middot; <a href='".$data['edit_link']['link']."'>".$data['edit_link']['name']."</a>\n</span>\n";
-                            echo "<span class='comment_actions'>&middot; <a href='".$data['delete_link']['link']."'>".$data['delete_link']['name']."</a>\n</span>\n";
-                        } ?>
-                    </small>
-                </div>
-            </li>
-            </div>
-            <?php
-        }
-    } else {
-        echo "<li class='submit'>".$locale['c101']."</li>";
-    }
 }
 
 function display_avatar(array $userdata, $size, $class = '', $link = TRUE, $img_class = 'img-thumbnail', $custom_avatar = '') {
