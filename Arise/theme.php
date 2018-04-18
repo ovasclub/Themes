@@ -92,30 +92,19 @@ function render_page() {
             echo showbanners(1);
 
             echo '<div class="row">';
-                $content = ['sm' => 11, 'md' => 11, 'lg' => 11];
+                $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
                 $left    = ['sm' => 3,  'md' => 2,  'lg' => 2];
-                $right   = ['sm' => 3,  'md' => 2,  'lg' => 2];
+                $right   = ['sm' => 3,  'md' => 3,  'lg' => 3];
 
                 $left_side = TRUE;
                 $right_side = TRUE;
-                $half_grid = TRUE;
-                $no_padding = 'p-l-0 p-r-0 ';
+                $padding_left = defined('LEFT') && LEFT ? 'p-l-0 ' : '';
+                $padding_right = defined('RIGHT') && RIGHT ? 'p-r-0 ' : '';
                 if (ARISE_2COL == TRUE) {
                     $left_side = ARISE_SIDE == 'LEFT' ? TRUE : FALSE;
                     $right_side = ARISE_SIDE == 'RIGHT' ? TRUE : FALSE;
-                    $half_grid = FALSE;
-                    $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
-                    $left    = ['sm' => 3,  'md' => 2,  'lg' => 3];
-                    $right   = ['sm' => 3,  'md' => 2,  'lg' => 3];
-                    $no_padding = $left_side == TRUE ? 'p-l-0 ' : 'p-r-0 ';
-                }
-
-                $half_column = '';
-                $side = '';
-
-                if ($half_grid == TRUE) {
-                    $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
-                    $side = '-5';
+                    $padding_left = $left_side == TRUE ? 'p-l-0 ' : '';
+                    $padding_right = $right_side == TRUE ? 'p-r-0 ' : '';
                 }
 
                 if ((defined('LEFT') && LEFT) && $left_side == TRUE) {
@@ -131,26 +120,22 @@ function render_page() {
                 }
 
                 if ((defined('LEFT') && LEFT) && $left_side == TRUE) {
-                    echo '<div id="left-side" class="col-xs-12 col-sm-'.$left['sm'].$side.' col-md-'.$left['md'].$side.' col-lg-'.$left['lg'].$side.'">';
+                    echo '<div id="left-side" class="col-xs-12 col-sm-'.$left['sm'].' col-md-'.$left['md'].' col-lg-'.$left['lg'].'">';
                         echo defined('RIGHT') && RIGHT && $right_side == FALSE ? RIGHT : '';
                         echo defined('LEFT') && LEFT ? LEFT : '';
                     echo '</div>';
                 }
 
-                echo '<div id="main-content" class="'.$no_padding.'col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
+                echo '<div id="main-content" class="'.$padding_left.$padding_right.'col-xs-12 col-sm-'.$content['sm'].' col-md-'.$content['md'].' col-lg-'.$content['lg'].'">';
                     echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
-
                     echo CONTENT;
-
                     echo defined('L_CENTER') && L_CENTER ? L_CENTER : '';
-
                     echo showbanners(2);
                 echo '</div>';
 
                 if ((defined('RIGHT') && RIGHT) && $right_side == TRUE) {
-                    echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].$side.' col-md-'.$right['md'].$side.' col-lg-'.$right['lg'].$side.'">';
+                    echo '<div id="right-side" class="col-xs-12 col-sm-'.$right['sm'].' col-md-'.$right['md'].' col-lg-'.$right['lg'].'">';
                         echo defined('RIGHT') && RIGHT ? RIGHT : '';
-
                         echo defined('LEFT') && LEFT && $left_side == FALSE ? LEFT : '';
                     echo '</div>';
                 }

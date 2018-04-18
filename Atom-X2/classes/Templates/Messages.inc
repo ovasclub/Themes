@@ -79,12 +79,10 @@ class Messages extends Core {
                 if (!isset($_GET['msg_send']) && (!empty($info['actions_form']) || isset($_GET['msg_read']))) {
                     echo '<div class="m-b-20">';
                         if (isset($_GET['msg_read'])) {
-                            echo '<a class="btn btn-default" href="'.$info['button']['back']['link'].'" title="'.$info['button']['back']['title'].'">';
-                                echo '<i class="fa fa-long-arrow-left"></i>';
-                            echo '</a>';
+                            echo '<a class="btn btn-default m-r-10" href="'.$info['button']['back']['link'].'" title="'.$info['button']['back']['title'].'"><i class="fa fa-long-arrow-left"></i></a>';
                         }
 
-                        echo $info['actions_form'];
+                        echo '<div class="display-inline-block">'.$info['actions_form'].'</div>';
                     echo '</div>';
                 }
 

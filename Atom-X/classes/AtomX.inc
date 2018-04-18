@@ -71,9 +71,9 @@ class AtomX extends Components {
 
                 echo '<div class="row">';
 
-                $content = ['sm' => 11, 'md' => 11, 'lg' => 11];
+                $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
                 $left    = ['sm' => 3,  'md' => 2,  'lg' => 2];
-                $right   = ['sm' => 3,  'md' => 2,  'lg' => 2];
+                $right   = ['sm' => 3,  'md' => 3,  'lg' => 3];
 
                 if (defined('LEFT') && LEFT) {
                     $content['sm'] = $content['sm'] - $left['sm'];
@@ -88,13 +88,12 @@ class AtomX extends Components {
                 }
 
                 if (defined('LEFT') && LEFT) {
-                    echo '<div class="col-xs-12 col-sm-'.$left['sm'].'-5 col-md-'.$left['md'].'-5 col-lg-'.$left['lg'].'-5">';
+                    echo '<div class="col-xs-12 col-sm-'.$left['sm'].' col-md-'.$left['md'].' col-lg-'.$left['lg'].'">';
                         echo LEFT;
                     echo '</div>';
                 }
 
-                $half_column = (defined('LEFT') && LEFT) || (defined('RIGHT') && RIGHT) ? '' : '-5';
-                echo '<div class="col-xs-12 col-sm-'.$content['sm'].$half_column.' col-md-'.$content['md'].$half_column.' col-lg-'.$content['lg'].$half_column.'">';
+                echo '<div class="col-xs-12 col-sm-'.$content['sm'].' col-md-'.$content['md'].' col-lg-'.$content['lg'].'">';
                     echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
                     echo CONTENT;
                     echo defined('L_CENTER') && L_CENTER ? L_CENTER : '';
@@ -102,9 +101,8 @@ class AtomX extends Components {
                 echo '</div>';
 
                 if (defined('RIGHT') && RIGHT && $this->GetParam('right') == TRUE || $this->GetParam('right_content')) {
-                    echo '<div class="col-xs-12 col-sm-'.$right['sm'].'-5 col-md-'.$right['md'].'-5 col-lg-'.$right['lg'].'-5">';
+                    echo '<div class="col-xs-12 col-sm-'.$right['sm'].' col-md-'.$right['md'].' col-lg-'.$right['lg'].'">';
                         echo ($this->GetParam('right') == TRUE && defined('RIGHT') && RIGHT) ? RIGHT : '';
-
                         echo $this->GetParam('right_content');
                     echo '</div>';
                 }

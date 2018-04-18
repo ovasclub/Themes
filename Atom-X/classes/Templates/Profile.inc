@@ -35,11 +35,6 @@ class Profile extends Core {
 
         Components::HidePanels();
 
-        $basic_info = [];
-        if (isset($info['core_field']) && is_array($info['core_field'])) $basic_info = $info['core_field'];
-        $field_info = [];
-        if (isset($info['user_field']) && is_array($info['user_field'])) $field_info = $info['user_field'];
-
         ob_start();
         echo '<div class="container-fluid" style="padding-bottom: 30px;"><div class="row">';
             echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
@@ -114,24 +109,32 @@ class Profile extends Core {
                             echo '<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">';
                                 echo display_avatar($user_data, '50px', '', TRUE, 'img-rounded', $custom_avatar);
                             echo '</div>';
-                            echo '<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">';
-                                foreach ($basic_info as $field_id => $data) {
-                                    switch ($field_id) {
-                                        case 'profile_user_group':
-                                            break;
-                                        case 'profile_user_joined':
-                                            $user_level['user_joined'] = $data['value'];
-                                            break;
-                                        case 'profile_user_visit':
-                                            $user_level['user_lastvisit'] = $data['value'];
-                                            break;
-                                        default:
-                                            if (!empty($data['value'])) {
-                                                echo '<div id="'.$field_id.'" class="row">';
+
+                            echo '<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">';
+                                if (!empty($info['core_field'])) {
+                                    foreach ($info['core_field'] as $field_id => $data) {
+                                        switch ($field_id) {
+                                            case 'profile_user_group':
+                                                if (!empty($data['value']) && is_array($data['value'])) {
+                                                    foreach ($data['value'] as $groups) {
+                                                        $user_groups[] = $groups;
+                                                    }
+                                                }
+                                                break;
+                                            case 'profile_user_joined':
+                                                $user_level['user_joined'] = $data['value'];
+                                                break;
+                                            case 'profile_user_visit':
+                                                $user_level['user_lastvisit'] = $data['value'];
+                                                break;
+                                            default:
+                                                if (!empty($data['value'])) {
+                                                    echo '<div id="'.$field_id.'" class="row">';
                                                     echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><strong>'.$data['title'].'</strong></div>';
                                                     echo '<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">'.$data['value'].'</div>';
-                                                echo '</div>';
-                                            }
+                                                    echo '</div>';
+                                                }
+                                        }
                                     }
                                 }
 
@@ -150,7 +153,31 @@ class Profile extends Core {
                                         });
                                     ');
                                 echo '</div>';
+                            echo '</div>';
 
+                            echo '<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">';
+                                echo '<label class="pull-left"><strong>'.$locale['u057'].'</strong></label>';
+                                echo '<div class="pull-right">';
+                                    if (!empty($user_groups) && is_array($user_groups)) {
+                                        $i = 0;
+                                        foreach ($user_groups as $id => $group) {
+                                            echo $i > 0 ? ', ' : '';
+                                            echo '<a href="'.$group['group_url'].'">'.$group['group_name'].'</a>';
+                                            $i++;
+                                        }
+                                    } else {
+                                        echo !empty($locale['u117']) ? $locale['u117'] : $locale['na'];
+                                    }
+                                echo '</div>';
+
+                                if (!empty($info['group_admin'])) {
+                                    $group = $info['group_admin'];
+                                    echo $group['ug_openform'];
+                                    echo '<div class="strong">'.$group['ug_title'].'</div>';
+                                    echo '<div class="spacer-xs">'.$group['ug_dropdown_input'].'</div>';
+                                    echo '<div>'.$group['ug_button'].'</div>';
+                                    echo $group['ug_closeform'];
+                                }
                             echo '</div>';
                         echo '</div>'; // .row
                         echo '</div>';
@@ -161,9 +188,9 @@ class Profile extends Core {
                     }
                 }
 
-                if (!empty($field_info)) {
+                if (!empty($info['user_field'])) {
                     echo '<div class="row profile-fields equal-height" id="extra-info">';
-                    foreach ($field_info as $field_cat_id => $category_data) {
+                    foreach ($info['user_field'] as $field_cat_id => $category_data) {
                         if (!empty($category_data['fields'])) {
                             echo '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
                                 echo '<div class="panel panel-default" style="height: 100%;">';
