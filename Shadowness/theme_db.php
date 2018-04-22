@@ -20,12 +20,12 @@ if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
 
-$theme_readme = 'about.php';
-$theme_folder = 'Shadowness';
 $theme_title = 'Shadowness';
+$theme_description = '';
 $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Chan, RobiNN';
 $theme_web = 'https://www.php-fusion.co.uk';
 $theme_license = 'AGPL3';
 $theme_version = '1.01';
-$theme_description = '';
+$theme_folder = 'Shadowness';
+$theme_readme = 'about.php';

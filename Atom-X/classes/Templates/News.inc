@@ -177,11 +177,11 @@ class News extends Core {
         ob_start();
         $i = 0;
         echo '<ul class="list-style-none">';
-        foreach ($info['news_filter'] as $link => $title) {
-            $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link, $_GET['type']) ? ' text-dark' : '';
-            echo '<li><a href="'.$link.'" class="display-inline'.$filter_active.' m-r-10">'.$title.'</a></li>';
-            $i++;
-        }
+            foreach ($info['news_filter'] as $link => $title) {
+                $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link, $_GET['type']) ? ' text-dark' : '';
+                echo '<li><a href="'.$link.'" class="display-inline'.$filter_active.' m-r-10">'.$title.'</a></li>';
+                $i++;
+            }
         echo '</ul>';
 
         echo $additonal;
