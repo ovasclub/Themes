@@ -119,18 +119,7 @@ class News extends Core {
 
         Components::HidePanels();
 
-        $i = 0;
-        $right = '<ul class="list-style-none">';
-            foreach ($info['news_filter'] as $link => $title) {
-                $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link, $_GET['type']) ? ' text-dark' : '';
-                $right .= '<li><a href="'.$link.'" class="display-inline'.$filter_active.' m-r-10">'.$title.'</a></li>';
-                $i++;
-            }
-        $right .= '</ul>';
-
-        $right .= $data['news_show_ratings'];
-
-        self::RightSide($info, $right);
+        self::RightSide($info, $data['news_show_ratings']);
 
         echo '<div class="clearfix">';
             echo '<h1 class="m-t-0 display-inline">'.$data['news_subject'].'</h1>';
@@ -190,6 +179,15 @@ class News extends Core {
         $locale += self::GetInstance()->SetLocale();
 
         ob_start();
+        $i = 0;
+        echo '<ul class="list-style-none">';
+            foreach ($info['news_filter'] as $link => $title) {
+                $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link, $_GET['type']) ? ' text-dark' : '';
+                echo '<li><a href="'.$link.'" class="display-inline'.$filter_active.' m-r-10">'.$title.'</a></li>';
+                $i++;
+            }
+        echo '</ul>';
+
         echo $additonal;
         echo '<div class="text-uppercase m-b-20" style="background: #121A23;color: #fff;padding: 1px 10px;"><h6><b>'.$locale['news_0009'].'</b></h6></div>';
         echo '<ul class="list-style-none">';
