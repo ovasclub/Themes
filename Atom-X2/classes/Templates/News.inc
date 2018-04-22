@@ -169,9 +169,22 @@ class News extends Core {
                 echo $data['news_news'];
                 echo !empty($data['news_extended']) ? '<p class="m-t-10">'.$data['news_extended'].'</p>' : '';
 
-                echo '<hr/>'.$data['news_show_comments'];
+                if (!empty($data['news_gallery'])) {
+                    echo '<hr/>';
+                    echo '<h3>'.$locale['news_0019'].'</h3>';
+
+                    echo '<div class="overflow-hide m-b-20">';
+                        foreach ($data['news_gallery'] as $id => $image) {
+                            echo '<div class="pull-left" style="width: 250px; height: 120px;">';
+                                echo colorbox(IMAGES_N.$image['news_image'], 'Image #'.$id, TRUE);
+                            echo '</div>';
+                        }
+                    echo '</div>';
+                }
             echo '</div>';
         echo '</div>';
+
+        echo '<hr/>'.$data['news_show_comments'];
     }
 
     private static function RightSide($info, $additonal = '') {
@@ -179,6 +192,10 @@ class News extends Core {
         $locale += self::GetInstance()->SetLocale();
 
         ob_start();
+        if (!empty($info['news_last_updated'])) {
+            echo '<span><strong class="text-dark">'.$locale['news_0008'].':</strong> '.$info['news_last_updated'].'</span>';
+        }
+
         $i = 0;
         echo '<ul class="list-style-none">';
             foreach ($info['news_filter'] as $link => $title) {
