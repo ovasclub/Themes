@@ -79,7 +79,8 @@ class Messages extends Core {
                             echo '<a class="btn btn-default m-r-10" href="'.$info['button']['back']['link'].'" title="'.$info['button']['back']['title'].'"><i class="fa fa-long-arrow-left"></i></a>';
                         }
 
-                        echo '<div class="display-inline-block">'.$info['actions_form'].'</div>';
+                        echo !empty($info['actions_form']) ? '<div class="display-inline-block">'.$info['actions_form'].'</div>' : '';
+                        echo !empty($info['pagenav']) ? '<div class="display-inline-block pull-right">'.$info['pagenav'].'</div>' : '';
                     echo '</div>';
                 }
 
