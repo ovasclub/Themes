@@ -510,14 +510,14 @@ a:active {
     padding-top: 30px;
 }
 
-.tab-pane {
+.profile-main {
+    margin-top: -67px;
+}
+
+.profile-main .tab-pane {
     padding: 20px;
     text-align: left;
     margin-bottom: 30px;
-}
-
-.profile-main {
-    margin-top: -67px;
 }
 
 .profile-fields .panel .profile_category_name {
@@ -857,16 +857,37 @@ blockquote {
     background-color: #EEE;
 }
 
-.editor-wrapper > .nav > li a:hover,
-.editor-wrapper > .nav > li a:active,
-.editor-wrapper > .nav > li.active > a {
+.panel-txtarea > .panel-heading {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.panel-txtarea > .panel-heading .bbcode {
+    margin: 5px 1px;
+}
+
+.panel-txtarea > .panel-footer {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.panel-txtarea .bbcode_input {
+    height: 35px;
+}
+
+.panel-txtarea .editor-wrapper > .nav > li a:active,
+.panel-txtarea .editor-wrapper > .nav > li.active > a {
     background-color: #E0E0E0;
     background-position: 0 -15px;
     border-color: #74898a;
 }
 
-.editor-wrapper > .nav > li > a {
-    padding: 1px 5px;
+.panel-txtarea .editor-wrapper > .nav > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .list-style-none > li {
