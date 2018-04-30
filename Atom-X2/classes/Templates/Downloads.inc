@@ -60,6 +60,7 @@ class Downloads extends Core {
 
     private static function display_download_index($info) {
         $locale = fusion_get_locale();
+        $dl_settings = get_settings('downloads');
 
         if (!empty($info['download_cat_description'])) {
             echo '<div class="display-block p-10">'.$info['download_cat_description'].'</div><hr/>';
@@ -70,18 +71,18 @@ class Downloads extends Core {
                 foreach ($info['download_item'] as $download_id => $data) {
                     echo '<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 p-l-5 p-r-5" style="height: 230px;">';
                         echo '<div class="item-container">';
-                            echo '<div class="item-image-holder">';
-                                $cat_id = $data['download_cat_id'];
-                                $link = DOWNLOADS.'downloads.php?cat_id='.$cat_id.'&download_id='.$data['download_id'];
+                            $link = DOWNLOADS.'downloads.php?cat_id='.$data['download_cat_id'].'&download_id='.$data['download_id'];
 
-                                echo '<h3 class="m-t-0 m-b-0 text-center"><a style="font-weight:bold; font-size:13px;" href="'.$link.'">'.trimlink($data['download_title'], 20).'</a></h3>';
-
-                                    if ($data['download_image']) {
-                                        echo '<a href="'.$link.'"><img src="'.$data['download_thumb'].'" alt="'.$data['download_title'].'" style="height: 100px;"></a>';
-                                    } else {
-                                        echo '<a href="'.$link.'">'.get_image('imagenotfound', $data['download_title'], 'height: 100px;').'</a>';
-                                    }
-                            echo '</div>';
+                            echo '<h3 class="m-t-0 m-b-0 text-center"><a style="font-weight: bold;font-size: 13px;" href="'.$link.'">'.trimlink($data['download_title'], 20).'</a></h3>';
+                            if ($dl_settings['download_screenshot'] == 1) {
+                                echo '<div class="item-image-holder"><a href="'.$link.'">';
+                                if ($data['download_thumb'] && file_exists($data['download_thumb'])) {
+                                    echo '<img src="'.$data['download_thumb'].'" alt="'.$data['download_title'].'" style="height: 100px;">';
+                                } else {
+                                    echo get_image('imagenotfound', $data['download_title'], 'height: 100px;');
+                                }
+                                echo '</a></div>';
+                            }
 
                             echo '<div class="p-5"><a href="'.$link.'" class="btn btn-primary btn-sm btn-block"><i class="fa fa-download fa-fw"></i> '.$locale['download_1007'].'</a></div>';
                         echo '</div>';
@@ -105,7 +106,7 @@ class Downloads extends Core {
             $grid = $data['download_allow_ratings'] ? 8 : 12;
             echo '<div class="col-xs-12 col-sm-'.$grid.' col-md-'.$grid.' col-lg-'.$grid.'">';
                 echo '<div class="row">';
-                    if ($dl_settings['download_screenshot'] && $data['download_image'] && file_exists(DOWNLOADS.'images/'.$data['download_image'])) {
+                    if ($dl_settings['download_screenshot'] == 1 && $data['download_image'] && file_exists(DOWNLOADS.'images/'.$data['download_image'])) {
                         echo '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">';
                             echo '<div style="border: 1px solid #ddd;border-radius: 6px;padding: 5px;">';
                                 echo '<img src="'.DOWNLOADS.'images/'.$data['download_image'].'" alt="'.$data['download_title'].'" class="img-responsive"/>';
