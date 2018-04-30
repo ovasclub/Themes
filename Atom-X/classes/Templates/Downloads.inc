@@ -97,9 +97,9 @@ class Downloads extends Core {
     }
 
     private static function display_download_item($info) {
-        $dl_settings = get_settings('downloads');
         $locale = fusion_get_locale();
         $locale += self::GetInstance()->SetLocale();
+        $dl_settings = get_settings('downloads');
         $data = $info['download_item'];
 
         echo '<div class="row">';

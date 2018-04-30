@@ -388,3 +388,28 @@ hr {
     -webkit-border-radius: 3px;
     border-radius: 3px;
 }
+
+.text-primary,
+.text-primary:hover {
+    color: #158cba;
+}
+
+.text-success,
+.text-success:hover {
+    color: #28b62c;
+}
+
+.text-danger,
+.text-danger:hover {
+    color: #ff4136;
+}
+
+.text-warning,
+.text-warning:hover {
+    color: #ff851b;
+}
+
+.text-info,
+.text-info:hover {
+    color: #75caeb;
+}
