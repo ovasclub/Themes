@@ -189,7 +189,7 @@ class News extends Core {
 
         ob_start();
         if (!empty($info['news_last_updated'])) {
-            echo '<span><strong class="text-dark">'.$locale['news_0008'].':</strong> '.$info['news_last_updated'].'</span>';
+            echo '<span><strong class="text-dark">'.$locale['news_0008'].':</strong> '.(is_array($info['news_last_updated']) ? showdate('newsdate', $info['news_last_updated'][1]) : $info['news_last_updated']).'</span>';
         }
 
         $i = 0;
