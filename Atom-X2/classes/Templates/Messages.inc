@@ -121,71 +121,42 @@ class Messages extends Core {
         } else if (isset($_GET['msg_send'])) {
             echo $info['reply_form'];
         } else {
-            $is_inbox = isset($_GET['folder']) && $_GET['folder'] == 'inbox' ? TRUE : FALSE;
-
             if (!empty($info['items'])) {
                 $unread = [];
                 $read = [];
 
-                if ($is_inbox) {
-                    foreach ($info['items'] as $message_id => $messageData) {
-                        if ($messageData['message_read']) {
-                            $read[$message_id] = $messageData;
-                        } else {
-                            $unread[$message_id] = $messageData;
-                        }
-                    }
-                } else {
-                    foreach ($info['items'] as $message_id => $messageData) {
+                foreach ($info['items'] as $message_id => $messageData) {
+                    if ($messageData['message_read']) {
                         $read[$message_id] = $messageData;
+                    } else {
+                        $unread[$message_id] = $messageData;
                     }
                 }
 
-                if ($is_inbox) {
-                    // Inbox
-                    echo '<h4><a data-target="#unread_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['446'].' <span class="caret"></span></a></h4>';
-                    echo '<div id="unread_inbox" class="collapse in">';
-                        if (!empty($unread)) {
-                            echo '<div class="table-responsive"><table id="unread_tbl" class="table table-hover table-striped">';
-                                foreach ($unread as $id => $messageData) {
-                                    echo '<tr>';
-                                        echo '<td class="col-xs-1">'.form_checkbox('pmID', '', '', [
-                                            'input_id' => 'pmID-'.$id,
-                                            'value'    => $id,
-                                            'class'    => 'm-b-0'
-                                        ]).'</td>';
-                                        echo '<td class="col-xs-2"><b>'.$messageData['contact_user']['user_name'].'</b></td>';
-                                        echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'"><b>'.$messageData['message']['name'].'</b></a></td>';
-                                        echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
-                                    echo '</tr>';
-                                }
-                            echo '</table></div>';
-                        } else {
-                            echo '<div class="well text-center">'.$locale['471'].'</div>';
-                        }
-                    echo '</div>';
+                echo '<h4><a data-target="#unread_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['446'].' <span class="caret"></span></a></h4>';
+                echo '<div id="unread_inbox" class="collapse in">';
+                    if (!empty($unread)) {
+                        echo '<div class="table-responsive"><table id="unread_tbl" class="table table-hover table-striped">';
+                            foreach ($unread as $id => $messageData) {
+                                echo '<tr>';
+                                    echo '<td class="col-xs-1">'.form_checkbox('pmID', '', '', [
+                                        'input_id' => 'pmID-'.$id,
+                                        'value'    => $id,
+                                        'class'    => 'm-b-0'
+                                    ]).'</td>';
+                                    echo '<td class="col-xs-2"><b>'.$messageData['contact_user']['user_name'].'</b></td>';
+                                    echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'"><b>'.$messageData['message']['name'].'</b></a></td>';
+                                    echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
+                                echo '</tr>';
+                            }
+                        echo '</table></div>';
+                    } else {
+                        echo '<div class="well text-center">'.$locale['471'].'</div>';
+                    }
+                echo '</div>';
 
-                    echo '<h4><a data-target="#read_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['447'].' <span class="caret"></span></a></h4>';
-                    echo '<div id="read_inbox" class="collapse in">';
-                        if (!empty($read)) {
-                            echo '<div class="table-responsive"><table id="read_tbl" class="table table-hover table-striped">';
-                                foreach ($read as $id => $messageData) {
-                                    echo '<tr>';
-                                        echo '<td class="col-xs-1">'.form_checkbox('pmID', '', '', [
-                                            'input_id' => 'pmID-'.$id,
-                                            'value'    => $id,
-                                            'class'    => 'm-b-0'
-                                        ]).'</td>';
-                                        echo '<td class="col-xs-2">'.$messageData['contact_user']['user_name'].'</td>';
-                                        echo '<td class="col-xs-7"><a href="'.$messageData['message']['link'].'">'.$messageData['message']['name'].'</a></td>';
-                                        echo '<td class="col-xs-2">'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $messageData['message_datestamp']).'</td>';
-                                    echo '</tr>';
-                                }
-                            echo '</table></div>';
-                        }
-                    echo '</div>';
-                } else {
-                    // Outbox & Archive
+                echo '<h4><a data-target="#read_inbox" class="pointer text-dark" data-toggle="collapse">'.$locale['447'].' <span class="caret"></span></a></h4>';
+                echo '<div id="read_inbox" class="collapse in">';
                     if (!empty($read)) {
                         echo '<div class="table-responsive"><table id="read_tbl" class="table table-hover table-striped">';
                             foreach ($read as $id => $messageData) {
@@ -202,7 +173,7 @@ class Messages extends Core {
                             }
                         echo '</table></div>';
                     }
-                }
+                echo '</div>';
             } else {
                 echo '<div class="well text-center">'.$info['no_item'].'</div>';
             }
