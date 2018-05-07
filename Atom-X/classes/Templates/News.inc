@@ -37,12 +37,11 @@ class News extends Core {
                     $i = 0;
                     foreach ($info['news_items'] as $id => $data) {
                         $i++;
-                        $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
 
                         echo '<div class="panel panel-default">';
                             echo '<div class="panel-heading p-0 news-image overflow-hide">'.$data['news_image'].'</div>';
                             echo '<div class="panel-body">';
-                                echo '<a href="'.$data['news_cat_link'].'"><small>'.$data['news_cat_name'].'</small></a>';
+                                echo '<a href="'.INFUSIONS.'news/news.php?cat_id='.$data['news_cat_id'].'"><small>'.$data['news_cat_name'].'</small></a>';
                                 echo ' <span class="text-uppercase text-lighter small">'.showdate(fusion_get_settings('newsdate'), $data['news_date']).'</span>';
                                 echo '<h4 class="m-t-0 m-b-0"><a class="text-dark text-underline" href="'.$data['news_link'].'"><b>'.$data['news_subject'].'</b></a></h4>';
                                 echo trim_text($data['news_news'], 400);
@@ -70,13 +69,11 @@ class News extends Core {
                     $news_items = array_slice($info['news_items'], 4, NULL, TRUE);
                     $i = 0;
                     foreach ($news_items as $id => $data) {
-                        $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
-
                         echo '<div class="m-t-10 m-b-10"'.($i > 0 ? ' style="border-top: 1px dashed #ccc;"' : '').'>';
                             echo '<h4 class="m-b-10"><a class="text-dark text-underline" href="'.$data['news_link'].'"><b>'.$data['news_subject'].'</b></a></h4>';
                             echo '<div class="clearfix m-b-10">';
                                 echo '<div class="pull-left m-t-5 news-image-small overflow-hide" style="height: 100px;"><img class="img-responsive" src="'.$data['news_image_optimized'].'" alt="'.$data['news_subject'].'"/></div>';
-                                echo '<a href="'.$data['news_cat_link'].'"><small>'.$data['news_cat_name'].'</small></a>';
+                                echo '<a href="'.INFUSIONS.'news/news.php?cat_id='.$data['news_cat_id'].'"><small>'.$data['news_cat_name'].'</small></a>';
                                 echo ' <span class="text-uppercase text-lighter small">'.showdate(fusion_get_settings('newsdate'), $data['news_date']).'</span>';
                                 echo '<div>'.trim_text($data['news_news'], 100).'</div>';
                             echo '</div>';
@@ -155,8 +152,7 @@ class News extends Core {
             echo '</div>';
 
             echo '<div class=" col-xs-12 col-sm-10 col-md-10 col-lg-10">';
-                $data['news_cat_link'] = !empty($data['news_cat_link']) ? $data['news_cat_link'] : $data['news_cat_url'];
-                echo '<div class="text-uppercase m-b-20">'.$locale['AX9_051'].'<a href="'.$data['news_cat_link'].'">'.$data['news_cat_name'].'</a></div>';
+                echo '<div class="text-uppercase m-b-20">'.$locale['AX9_051'].'<a href="'.INFUSIONS.'news/news.php?cat_id='.$data['news_cat_id'].'">'.$data['news_cat_name'].'</a></div>';
 
                 if ($data['news_image_align'] == 'pull-left' || $data['news_image_align'] == 'pull-right') {
                     echo '<div class="'.$data['news_image_align'].' m-r-10" style="max-width: 250px;">'.$data['news_image'].'</div>';
