@@ -177,6 +177,8 @@ class News extends Core {
                         }
                     echo '</div>';
                 }
+
+                echo $data['news_pagenav'] ? '<div class="text-center m-10">'.$data['news_pagenav'].'</div>' : '';
             echo '</div>';
         echo '</div>';
 
