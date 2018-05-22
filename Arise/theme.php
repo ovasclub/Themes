@@ -165,7 +165,7 @@ function render_page() {
             echo '</div>';
 
             echo '<div class="copyright">';
-                echo stripslashes($settings['footer']).'<br/>';
+                echo nl2br(parse_textarea($settings['footer'], FALSE, TRUE)).'<br/>';
                 echo showcopyright();
                 echo showprivacypolicy();
             echo '</div>';

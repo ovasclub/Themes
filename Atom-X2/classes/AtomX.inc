@@ -137,7 +137,7 @@ class AtomX extends Components {
                     echo '</div>';
                 echo '</div>';
 
-                echo stripslashes($this->settings['footer']);
+                echo nl2br(parse_textarea($this->settings['footer'], FALSE, TRUE));
             echo '</div></footer>'; // #footer
 
         echo '</div></section>'; // #bottomcontent

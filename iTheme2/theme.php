@@ -97,7 +97,7 @@ function render_page() {
                     echo '<br/>Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
                 echo '</div>';
                 echo '<div class="col-xs-12 col-sm-6">';
-                    echo stripslashes($settings['footer']).'<br/>';
+                    echo nl2br(parse_textarea($settings['footer'], FALSE, TRUE)).'<br/>';
                     echo showprivacypolicy();
                 echo '</div>';
             echo '</div>';
