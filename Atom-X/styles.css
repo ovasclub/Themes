@@ -355,22 +355,17 @@ a:active {
 }
 
 #mainbody .atomside {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    padding: 25px 20px 20px 20px;
-    margin-bottom: 20px;
-}
-
-#mainbody aside {
     background: rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(0, 0, 0, 0.1);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    padding: 25px;
-    margin-bottom: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#mainbody .atomside .heading {
+    font-size: 20px;
 }
 
 #mainbody .border {
