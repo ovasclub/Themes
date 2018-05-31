@@ -243,7 +243,7 @@ class News extends Core {
                         echo '<a href="'.INFUSIONS.'news/news.php?cat_id='.$data['news_cat_id'].'"><small>'.$data['news_cat_name'].'</small></a>';
                         echo '<h4 class="m-t-0 m-b-0"><a class="text-dark text-underline" href="'.INFUSIONS.'news/news.php?readmore='.$data['news_id'].'"><b>'.$data['news_subject'].'</b></a></h4>';
                     echo '</div>';
-                    echo '<div class="panel-footer">';
+                    echo '<div class="panel-footer clearfix">';
                         echo '<span><i class="fa fa-window-maximize"></i> <a href="'.INFUSIONS.'news/news.php?readmore='.$data['news_id'].'">'.$locale['AX9_047'].'</a></span>';
                         echo '<span class="m-l-5"><i class="fa fa-eye"></i> '.$data['news_reads'].'</span>';
 
