@@ -27,7 +27,7 @@ body {
 }
 
 a {
-    color: #b5b5b5;
+    color: #a5a5a5;
     text-transform: uppercase;
     font-weight: 700;
     -webkit-transition: 0.1s all ease-in-out;
@@ -140,7 +140,6 @@ a:focus {
 .mainpanel {
     background: #fff;
     margin-bottom: 10px;
-    padding: 15px;
 }
 
 .mainpanel .heading {

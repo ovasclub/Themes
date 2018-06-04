@@ -162,7 +162,7 @@ class Producer {
                     <li class='search'><?php
                         echo openform('searchform', 'post', BASEDIR.'search.php?stype=all', [
                             'class'      => '',
-                            'remote_url' => fusion_get_settings('site_path')."search.php"
+                            'remote_url' => $settings['site_path']."search.php"
                         ]);
                         echo form_text('search_field', '', '', ['width' => '100px', 'class' => 'm-t-0', 'placeholder' => $locale['search']]);
                         echo closeform(); ?></li>
@@ -203,6 +203,8 @@ class Producer {
     }
 
     public function sub_horizontal_nav($title, array $options = []) {
+        $settings = fusion_get_settings();
+
         $options += [
             'get' => !empty($options['get']) ? $options['get'] : 'section',
         ];
@@ -216,10 +218,10 @@ class Producer {
                     foreach ($title as $info) {
                         // if no request default is active
                         //$url = str_replace('../', '', $info['url']);
-                        $url = str_replace(fusion_get_settings('site_path'), '', $info['url']);
+                        $url = str_replace($settings['site_path'], '', $info['url']);
                         $default_active = !isset($_GET[$options['get']]) && $i == 0 ? TRUE : FALSE;
                         // if request matches current url
-                        $secondary_active = $_SERVER['REQUEST_URI'] == fusion_get_settings('site_path').$url ? TRUE : FALSE;
+                        $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url ? TRUE : FALSE;
                         // has get but belogns to other set, set default active.
                         $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0 ? TRUE : FALSE;
                         echo "<li><a ".($default_active || $secondary_active || $tertiary_active ? " class='active'" : "")." href='".$info['url']."' title='".$info['title']."'>".$info['title']."</a></li>\n";
@@ -236,6 +238,8 @@ class Producer {
      * Main
      */
     public function display_content() {
+        $settings = fusion_get_settings();
+
         if (in_array(FUSION_SELF, $this->crossover)) {
             include THEME.'templates/'.FUSION_SELF;
         }
@@ -266,7 +270,7 @@ class Producer {
             ?>
             <div class='<?php echo $main_container_css ?>'<?php echo $this->sub_width_blaster ? " style='width:100%'" : "" ?>>
                 <?php if ($this->show_menu) {
-                    echo showsublinks('', 'head menu navbar-default', ['logo' => fusion_get_settings('sitename'), 'show_header' => TRUE])."\n";
+                    echo showsublinks('', 'head menu navbar-default', ['logo' => $settings['sitename'], 'show_header' => TRUE])."\n";
                 }
                 ?>
                 <div class='overflow-hide'>
@@ -303,7 +307,7 @@ class Producer {
         echo '<div class="text-center">';
         echo showFooterErrors();
 
-        if (fusion_get_settings('rendertime_enabled') == 1 || fusion_get_settings('rendertime_enabled') == 2) {
+        if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {
             echo '<br/><span class="small">'.showrendertime().showMemoryUsage().'</span>';
         }
         echo '</div>';
@@ -314,6 +318,7 @@ class Producer {
      */
     public function display_footer() {
         $locale = fusion_get_locale();
+        $settings = fusion_get_settings();
         ?>
         <div id="footer" style="bottom: 0;">
             <div class="copyright display-inline-block">
@@ -336,7 +341,7 @@ class Producer {
                 </small>
             </div>
             <?php
-            if (fusion_get_settings('visitorcounter_enabled')) {
+            if ($settings['visitorcounter_enabled']) {
                 echo '<span class="count m-t-5">';
                 echo showcounter();
                 echo '</span>';
@@ -402,6 +407,8 @@ class Producer {
 
     // need to know full array.
     public function title($title, array $options = []) {
+        $settings = fusion_get_settings();
+
         $header_type = [
             'menu',
             'news',
@@ -416,10 +423,10 @@ class Producer {
             foreach ($title as $info) {
                 // if no request default is active
                 // $url = str_replace('../', '', $info['url']);
-                $url = str_replace(fusion_get_settings('site_path'), '', $info['url']);
+                $url = str_replace($settings['site_path'], '', $info['url']);
                 $default_active = !isset($_GET[$options['get']]) && $i == 0 ? TRUE : FALSE;
                 // if request matches current url
-                $secondary_active = $_SERVER['REQUEST_URI'] == fusion_get_settings('site_path').$url ? TRUE : FALSE;
+                $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url ? TRUE : FALSE;
                 // has get but belogns to other set, set default active.
                 $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0 ? TRUE : FALSE;
                 echo "<li><a ".($default_active || $secondary_active || $tertiary_active ? " class='active'" : "")." href='".$info['url']."' title='".$info['title']."'>".$info['title']."</a></li>\n";
@@ -525,6 +532,8 @@ function closetable() {
 }
 
 function display_avatar(array $userdata, $size, $class = '', $link = TRUE, $img_class = 'img-thumbnail', $custom_avatar = '') {
+    $settings = fusion_get_settings();
+
     if (empty($userdata)) {
         $userdata = [];
     }
@@ -538,11 +547,11 @@ function display_avatar(array $userdata, $size, $class = '', $link = TRUE, $img_
     if (!$userdata['user_id']) {
         $userdata['user_id'] = 1;
     }
-    $link = fusion_get_settings('hide_userprofiles') == TRUE ? (iMEMBER ? $link : FALSE) : $link;
+    $link = $settings['hide_userprofiles'] == TRUE ? (iMEMBER ? $link : FALSE) : $link;
     $class = ($class) ? "class='$class'" : '';
     // Need a full path - or else Jquery script cannot use this function.
-    $default_avatar = !empty($custom_avatar) ? $custom_avatar : fusion_get_settings('siteurl')."images/avatars/noavatar50.png";
-    $user_avatar = fusion_get_settings('siteurl')."images/avatars/".$userdata['user_avatar'];
+    $default_avatar = !empty($custom_avatar) ? $custom_avatar : $settings['siteurl']."images/avatars/noavatar50.png";
+    $user_avatar = $settings['siteurl']."images/avatars/".$userdata['user_avatar'];
     $hasAvatar = $userdata['user_avatar'] && file_exists(IMAGES."avatars/".$userdata['user_avatar']) && $userdata['user_status'] != '5' && $userdata['user_status'] != '6';
     $imgTpl = "<img class='avatar img-responsive $img_class' alt='".(!empty($userdata['user_name']) ? $userdata['user_name'] : 'Guest')."' data-pin-nopin='true' style='display:inline; width:$size;' src='%s'>";
     $img = sprintf($imgTpl, $hasAvatar ? $user_avatar : $default_avatar);

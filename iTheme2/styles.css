@@ -247,7 +247,7 @@ a:active {
 }
 
 .widget ul ul {
-    margin: 6px 0 -6px 0px;
+    margin: 6px 0 -6px 0;
     padding: 0;
     border-top: solid 1px #ddd;
 }

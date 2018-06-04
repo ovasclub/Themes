@@ -156,7 +156,7 @@ class Producer extends Core {
 
         if ($this->GetParam('atom_banner') == TRUE) {
             echo '<div class="atom-banner">';
-                $file_path = str_replace(ltrim(fusion_get_settings('site_path'), '/'), '', preg_replace('/^\//', '', FUSION_REQUEST));
+                $file_path = str_replace(ltrim($settings['site_path'], '/'), '', preg_replace('/^\//', '', FUSION_REQUEST));
                 if ($settings['site_seo'] && defined('IN_PERMALINK')) {
                     require_once CLASSES.'PHPFusion/Rewrite/Router.inc';
                     $file_path = Router::getRouterInstance()->getCurrentURL();

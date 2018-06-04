@@ -25,6 +25,7 @@ class Login extends Core {
         $locale = fusion_get_locale('', ATOM9_LOCALE);
         $aidlink = fusion_get_aidlink();
         $userdata = fusion_get_userdata();
+        $settings = fusion_get_settings();
 
         self::SetParam('panels', FALSE);
 
@@ -52,14 +53,14 @@ class Login extends Core {
                             echo ($msg_count == 1 ? $locale['global_126'] : $locale['global_127']).'</a></strong><br/>';
                         }
 
-                        echo '<a href="'.BASEDIR.fusion_get_settings('opening_page').'">'.$locale['home'].'</a>';
+                        echo '<a href="'.BASEDIR.$settings['opening_page'].'">'.$locale['home'].'</a>';
                     echo '</div>';
                 } else {
                     echo renderNotices(getNotices(['all', FUSION_SELF]));
 
-                    echo '<a href="'.BASEDIR.fusion_get_settings('opening_page').'"><img style="margin: 5px auto;" class="img-responsive m-b-20" src="'.BASEDIR.fusion_get_settings('sitebanner').'" alt="'.fusion_get_settings('sitename').'"/></a>';
+                    echo '<a href="'.BASEDIR.$settings['opening_page'].'"><img style="margin: 5px auto;" class="img-responsive m-b-20" src="'.BASEDIR.$settings['sitebanner'].'" alt="'.$settings['sitename'].'"/></a>';
 
-                    switch (fusion_get_settings('login_method')) {
+                    switch ($settings['login_method']) {
                         case 2:
                             $placeholder = $locale['global_101c'];
                             break;
@@ -93,6 +94,7 @@ class Login extends Core {
 
     public static function RegisterForm($info) {
         $locale = fusion_get_locale('', ATOM9_LOCALE);
+        $settings = fusion_get_settings();
 
         self::SetParam('panels', FALSE);
 
@@ -103,7 +105,7 @@ class Login extends Core {
             echo '<div class="p-20">';
                 echo renderNotices(getNotices(['all', FUSION_SELF]));
 
-                echo '<a href="'.BASEDIR.fusion_get_settings('opening_page').'"><img style="margin: 5px auto;" class="img-responsive" src="'.BASEDIR.fusion_get_settings('sitebanner').'" alt="'.fusion_get_settings('sitename').'"/></a>';
+                echo '<a href="'.BASEDIR.$settings['opening_page'].'"><img style="margin: 5px auto;" class="img-responsive" src="'.BASEDIR.$settings['sitebanner'].'" alt="'.$settings['sitename'].'"/></a>';
 
                 $open = '';
                 $close = '';

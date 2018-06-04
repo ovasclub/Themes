@@ -26,5 +26,5 @@ $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'PHP-Fusion Inc & RobiNN';
 $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';
-$theme_version = '1.03';
+$theme_version = '1.4';
 $theme_folder = 'Atom-X';

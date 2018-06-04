@@ -78,7 +78,7 @@ class Profile extends Core {
 
         self::SetParam('section_header', $header);
 
-        $custom_avatar = fusion_get_settings('siteurl').'themes/Atom-X2/images/noavatar50.png';
+        $custom_avatar = $settings['siteurl'].'themes/Atom-X2/images/noavatar50.png';
         $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
 
         echo '<div class="row">';
@@ -323,7 +323,7 @@ class Profile extends Core {
                         if ($forum) echo '<li><span class="m-r-10"><img src="'.THEME.'images/icons/forum.png" alt="Forum"/></span><a href="'.FORUM.'index.php">'.$locale['AX9_029'].'</a></li>';
                         $news = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
                         if ($news) echo '<li><span class="m-r-10"><img src="'.THEME.'images/icons/news.png" alt="News"/></span><a href="'.INFUSIONS.'news/news.php">'.$locale['AX9_030'].'</a></li>';
-                        echo '<li><span class="m-r-10"><img src="'.THEME.'images/icons/mail.png" alt="Mail"/></span><a href="mailto:'.fusion_get_settings('siteemail').'">'.fusion_get_settings('siteemail').'</a></li>';
+                        echo '<li><span class="m-r-10"><img src="'.THEME.'images/icons/mail.png" alt="Mail"/></span><a href="mailto:'.$settings['siteemail'].'">'.$settings['siteemail'].'</a></li>';
                     echo '</ul>';
                 echo '</div></div>'; // #point-of-interest
 

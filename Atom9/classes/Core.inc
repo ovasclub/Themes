@@ -54,7 +54,8 @@ class Core {
     }
 
     public function GetIgnitionPacks($ignition_pack) {
-        add_to_head('<link rel="stylesheet" href="'.THEME.'IgnitionPacks/'.$ignition_pack.'/styles.css" type="text/css"/>');
+        $css = file_exists(THEME.'IgnitionPacks/'.$ignition_pack.'/styles.min.css') ? THEME.'IgnitionPacks/'.$ignition_pack.'/styles.min.css' : THEME.'IgnitionPacks/'.$ignition_pack.'/styles.css';
+        add_to_head('<link rel="stylesheet" href="'.$css.'" type="text/css"/>');
 
         require_once THEME.'IgnitionPacks/'.$ignition_pack.'/theme.php';
     }
@@ -74,6 +75,7 @@ class Core {
     }
 
     public static function FooterPanels() {
+        $settings = fusion_get_settings();
         $theme_settings = get_theme_settings('Atom9');
         $exclude_list = '';
 
@@ -82,7 +84,7 @@ class Core {
         }
 
         if (is_array($exclude_list)) {
-            if (fusion_get_settings('site_seo')) {
+            if ($settings['site_seo']) {
                 $params = http_build_query(\PHPFusion\Rewrite\Router::getRouterInstance()->get_FileParams());
                 $file_path = '/'.\PHPFusion\Rewrite\Router::getRouterInstance()->getFilePath().($params ? '?' : '').$params;
                 $script_url = explode('/', $file_path);
@@ -91,7 +93,7 @@ class Core {
             }
 
             $url_count = count($script_url);
-            $base_url_count = substr_count(BASEDIR, '../') + (fusion_get_settings('site_seo') ? ($url_count - 1) : 1);
+            $base_url_count = substr_count(BASEDIR, '../') + ($settings['site_seo'] ? ($url_count - 1) : 1);
 
             $match_url = '';
             while ($base_url_count != 0) {

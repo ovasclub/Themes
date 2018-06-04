@@ -24,7 +24,7 @@ class AtomX extends Components {
     public function RenderPage() {
         echo '<div class="page-box">';
             echo '<section id="topcontent"><div class="container-fluid">';
-                echo '<div class="logo"><a href="'.BASEDIR.$this->settings['opening_page'].'" class="'.fusion_get_settings('logoposition_xs').' '.fusion_get_settings('logoposition_sm').' '.fusion_get_settings('logoposition_md').' '.fusion_get_settings('logoposition_lg').'"><img src="'.BASEDIR.$this->settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
+                echo '<div class="logo"><a href="'.BASEDIR.$this->settings['opening_page'].'" class="'.$this->settings['logoposition_xs'].' '.$this->settings['logoposition_sm'].' '.$this->settings['logoposition_md'].' '.$this->settings['logoposition_lg'].'"><img src="'.BASEDIR.$this->settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
 
                 // Uncomment and edit, if you want show social networks in right top
                 /*echo '<div class="social-links">';
@@ -184,7 +184,7 @@ class AtomX extends Components {
                             }
 
                             echo openform('loginform', 'post', $action_url, ['form_id' => 'login-form']);
-                            switch (fusion_get_settings('login_method')) {
+                            switch ($this->settings['login_method']) {
                                 case 2:
                                     $placeholder = $this->locale['global_101c'];
                                     break;

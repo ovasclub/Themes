@@ -26,10 +26,6 @@ body {
     position: relative;
 }
 
-ul > li {
-    list-style: none;
-}
-
 /* Links */
 a {
     color: #fff;
@@ -1244,7 +1240,6 @@ li.button:active,
     -webkit-border-radius: 3px;
     border-radius: 3px;
     background: rgba(255, 255, 255, .2);
-    border-radius: 3px;
 }
 
 #header .menu .exp div.bar span {
@@ -2604,7 +2599,6 @@ li.button {
     height: 18px;
     -moz-border-radius-bottomleft: 5px;
     -webkit-border-bottom-left-radius: 5px;
-    border-radius-bottom-left: 5px;
 }
 
 .activity .favorite:hover,
@@ -4062,8 +4056,8 @@ input[type='image'] {
 }
 
 input[type='image']:hover {
-    -webkit-box-shadow: 0px 0px 25px rgba(255, 255, 255, .5) !important;
-    box-shadow: 0px 0px 25px rgba(255, 255, 255, .5) !important;
+    -webkit-box-shadow: 0 0 25px rgba(255, 255, 255, .5) !important;
+    box-shadow: 0 0 25px rgba(255, 255, 255, .5) !important;
     border: 1px solid rgba(255, 255, 255, .3) !important;
 }
 

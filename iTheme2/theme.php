@@ -90,7 +90,7 @@ function render_page() {
         echo '</div>'; // #main-box
 
         echo '<footer id="main-footer" class="text-left">';
-            echo '<div class="row copyright">';
+            echo '<div class="row copyright m-b-20">';
                 echo '<div class="col-xs-12 col-sm-6">';
                     echo showcopyright();
                     echo '<br/>Theme by <a href="https://themify.me">Themify.me</a>. Converted to PHP-Fusion by: Khalid';

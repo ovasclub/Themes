@@ -39,7 +39,7 @@ class SearchEngine extends Core {
         ');
 
         echo '<div class="searchbox" style="display: none;"><div class="jumbotron">';
-            echo '<h4 style="font-weight: 600;">'.str_replace('[SITENAME]', fusion_get_settings('sitename'), $this->locale['400']).'</h4>';
+            echo '<h4 style="font-weight: 600;">'.str_replace('[SITENAME]', $this->settings['sitename'], $this->locale['400']).'</h4>';
 
             echo openform('searchform', 'post', BASEDIR.'search.php');
             echo '<div class="row m-t-20">';

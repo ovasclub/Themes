@@ -26,7 +26,7 @@ $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Frederick MC Chan (Chan) & RobiNN';
 $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';
-$theme_version = '1.3';
+$theme_version = '1.4';
 $theme_folder = 'Atom9';
 
 if (!defined('ATOM9_LOCALE')) {

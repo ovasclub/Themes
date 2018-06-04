@@ -645,8 +645,7 @@ a:active {
 .btn-default:focus,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-    background-color: #E0E0E0;
-    background-position: 0 -15px;
+    background: #E0E0E0 0 -15px;
 }
 
 .btn-primary {
@@ -665,8 +664,7 @@ a:active {
 .btn-primary:focus,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-    background-color: #2D6CA2;
-    background-position: 0 -15px;
+    background: #2D6CA2 0 -15px;
 }
 
 .btn-success {
@@ -685,8 +683,7 @@ a:active {
 .btn-success:focus,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
-    background-color: #419641;
-    background-position: 0 -15px;
+    background: #419641 0 -15px;
 }
 
 .btn-warning {
@@ -705,8 +702,7 @@ a:active {
 .btn-warning:focus,
 .btn-warning.active,
 .open > .dropdown-toggle.btn-warning {
-    background-color: #EB9316;
-    background-position: 0 -15px;
+    background: #EB9316 0 -15px;
 }
 
 .btn-danger {
@@ -725,8 +721,7 @@ a:active {
 .btn-danger:focus,
 .btn-danger.active,
 .open > .dropdown-toggle.btn-danger {
-    background-color: #C12E2A;
-    background-position: 0 -15px;
+    background: #C12E2A 0 -15px;
 }
 
 .form-control,
@@ -872,8 +867,7 @@ blockquote {
 
 .panel-txtarea .editor-wrapper > .nav > li a:active,
 .panel-txtarea .editor-wrapper > .nav > li.active > a {
-    background-color: #E0E0E0;
-    background-position: 0 -15px;
+    background: #E0E0E0 0 -15px;
     border-color: #74898a;
 }
 

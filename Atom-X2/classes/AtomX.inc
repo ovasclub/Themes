@@ -25,7 +25,7 @@ class AtomX extends Components {
         echo '<section id="topcontent"><div class="container">';
             echo '<nav class="nav atom-x-nav">';
                 echo $this->UserMenu();
-                echo '<div class="display-inline-block logo"><a href="'.BASEDIR.$this->settings['opening_page'].'" class="'.fusion_get_settings('logoposition_xs').' '.fusion_get_settings('logoposition_sm').' '.fusion_get_settings('logoposition_md').' '.fusion_get_settings('logoposition_lg').'"><img src="'.BASEDIR.$this->settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
+                echo '<div class="display-inline-block logo"><a href="'.BASEDIR.$this->settings['opening_page'].'" class="'.$this->settings['logoposition_xs'].' '.$this->settings['logoposition_sm'].' '.$this->settings['logoposition_md'].' '.$this->settings['logoposition_lg'].'"><img src="'.BASEDIR.$this->settings['sitebanner'].'" alt="Logo" class="img-responsive"/></a></div>';
             echo '</nav>';
             echo '<nav class="nav atom-x-subnav">';
                 $nav = SiteLinks::setSubLinks([
@@ -178,7 +178,7 @@ class AtomX extends Components {
                             }
 
                             echo openform('loginform', 'post', $action_url, ['form_id' => 'login-form']);
-                            switch (fusion_get_settings('login_method')) {
+                            switch ($this->settings['login_method']) {
                                 case 2:
                                     $placeholder = $this->locale['global_101c'];
                                     break;
