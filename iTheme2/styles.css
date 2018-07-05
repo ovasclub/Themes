@@ -371,10 +371,6 @@ hr {
     border-radius: 0;
 }
 
-.panel-txtarea .bbcode_input {
-    height: 35px;
-}
-
 .panel-txtarea .editor-wrapper > .nav > li a:active,
 .panel-txtarea .editor-wrapper > .nav > li.active > a {
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);

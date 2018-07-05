@@ -4315,8 +4315,8 @@ fieldset[disabled] #news-nav.navbar-default .btn-link:focus {
     border-radius: 0;
 }
 
-.panel-txtarea .bbcode_input {
-    height: 35px;
+.panel-txtarea .bbcode-img .caret {
+    display: none;
 }
 
 .panel-txtarea .editor-wrapper > .nav > li a:active,

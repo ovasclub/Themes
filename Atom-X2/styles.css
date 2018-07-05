@@ -781,10 +781,6 @@ blockquote {
     border-radius: 0;
 }
 
-.panel-txtarea .bbcode_input {
-    height: 35px;
-}
-
 .panel-txtarea .editor-wrapper > .nav > li a:active,
 .panel-txtarea .editor-wrapper > .nav > li.active > a {
     background: #E0E0E0 0 -15px;

@@ -15,21 +15,6 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-* {
-    outline: none !important;
-}
-
-html * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.container {
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
-
 #main-menu.affix {
     position: fixed;
     top: 0;
@@ -221,10 +206,6 @@ html * {
 .panel-txtarea > .panel-footer {
     -webkit-border-radius: 0;
     border-radius: 0;
-}
-
-.panel-txtarea .bbcode_input {
-    height: 35px;
 }
 
 .panel-txtarea .editor-wrapper > .nav > li > a {
