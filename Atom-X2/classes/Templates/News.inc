@@ -129,6 +129,8 @@ class News extends Core {
                         echo '<a href="'.$action['edit']['link'].'" class="btn btn-warning btn-circle btn-xs" title="'.$locale['edit'].'"><i class="fa fa-pencil"></i></a>';
                         echo '<a href="'.$action['delete']['link'].'" class="btn btn-danger btn-circle btn-xs" title="'.$locale['delete'].'"><i class="fa fa-trash"></i></a>';
                     echo '</div>';
+                } else {
+                    echo '<a href="'.$data['print_link'].'" class="btn btn-primary btn-circle btn-xs" title="'.$locale['print'].'" target="_blank"><i class="fa fa-print"></i></a>';
                 }
             echo '</div>';
         echo '</div>';
