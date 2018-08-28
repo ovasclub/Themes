@@ -111,7 +111,7 @@ class Downloads extends Core {
 
                     echo strtr($pagenav, [
                         'btn-block' => '',
-                        '\'>'        => '\'><i class="fa fa-refresh"></i> '
+                        '\'>'       => '\'><i class="fa fa-refresh"></i> '
                     ]);
                 echo '</div>';
             }

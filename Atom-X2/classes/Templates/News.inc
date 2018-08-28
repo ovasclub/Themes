@@ -52,7 +52,7 @@ class News extends Core {
                             echo '<div class="panel-footer">';
                                 echo '<span><i class="fa fa-window-maximize"></i> <a href="'.$data['news_link'].'">'.$locale['AX9_047'].'</a></span>';
 
-                                if ($data['news_allow_comments'] == 1) {
+                                if ($data['news_allow_comments'] && fusion_get_settings('comments_enabled') == 1) {
                                     if ($data['news_comments'] < 1) {
                                         echo '<span class="pull-right"><i class="fa fa-commenting-o text-lighter"></i> <a href="'.$data['news_link'].'#comment">'.$locale['AX9_048'].'</a></span>';
                                     } else {
@@ -81,7 +81,7 @@ class News extends Core {
                                 echo '<div>'.trim_text($data['news_news'], 100).'</div>';
                             echo '</div>';
                             echo '<div class="small text-uppercase">';
-                                if ($data['news_allow_comments'] == 1) {
+                                if ($data['news_allow_comments'] && fusion_get_settings('comments_enabled') == 1) {
                                     if ($data['news_comments'] < 1) {
                                         echo '<span><i class="fa fa-commenting-o text-lighter"></i> <a href="'.$data['news_link'].'#comment">'.$locale['AX9_048'].'</a></span>';
                                     } else {
@@ -253,7 +253,7 @@ class News extends Core {
                     echo '<div class="panel-footer clearfix">';
                         echo '<span><i class="fa fa-window-maximize"></i> <a href="'.INFUSIONS.'news/news.php?readmore='.$data['news_id'].'">'.$locale['AX9_047'].'</a></span>';
 
-                        if ($data['news_allow_comments'] == 1) {
+                        if ($data['news_allow_comments'] && fusion_get_settings('comments_enabled') == 1) {
                             if ($data['news_comments'] < 1) {
                                 echo '<span class="pull-right"><i class="fa fa-commenting-o text-lighter"></i> <a href="'.INFUSIONS.'news/news.php?readmore='.$data['news_id'].'#comment">'.$locale['AX9_048'].'</a></span>';
                             } else {

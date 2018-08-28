@@ -103,7 +103,7 @@ class Downloads extends Core {
         $data = $info['download_item'];
 
         echo '<div class="row">';
-            $grid = $data['download_allow_ratings'] ? 8 : 12;
+            $grid = $data['download_allow_ratings'] && fusion_get_settings('ratings_enabled') == 1 ? 8 : 12;
             echo '<div class="col-xs-12 col-sm-'.$grid.' col-md-'.$grid.' col-lg-'.$grid.'">';
                 echo '<div class="row">';
                     if ($dl_settings['download_screenshot'] == 1 && $data['download_image'] && file_exists(DOWNLOADS.'images/'.$data['download_image'])) {
@@ -155,7 +155,7 @@ class Downloads extends Core {
 
             echo '</div>';
 
-            if ($data['download_allow_ratings']) {
+            if ($data['download_allow_ratings'] && fusion_get_settings('ratings_enabled') == 1) {
                 echo '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">';
                     echo $data['download_show_ratings'];
                 echo '</div>';
