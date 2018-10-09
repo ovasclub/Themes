@@ -66,7 +66,7 @@ class Core {
         if (!empty($settings[$col])) {
             $panel = str_replace('.inc', '', $settings[$col]);
             $col = new \ReflectionClass('Atom9Theme\\Footer\\'.$panel);
-            $col = $col->newInstance()::Panel();
+            $col = $col->newInstance()->Panel();
 
             return $col;
         }
