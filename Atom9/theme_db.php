@@ -20,7 +20,7 @@ if (!defined('IN_FUSION')) {
     die('Access Denied');
 }
 
-$theme_title = 'Atom Producer Framework';
+$theme_title = 'Atom 9 - Producer Framework';
 $theme_description = 'Atom Producer Engine for the PHP-Fusion Core 9 CMS.';
 $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Frederick MC Chan (Chan) & RobiNN';

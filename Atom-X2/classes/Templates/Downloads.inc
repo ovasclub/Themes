@@ -84,6 +84,8 @@ class Downloads extends Core {
                                 echo '</a></div>';
                             }
 
+                            echo '<div class="text-center">'.$data['download_count'].'</div>';
+
                             echo '<div class="p-5"><a href="'.$link.'" class="btn btn-primary btn-sm btn-block"><i class="fa fa-download fa-fw"></i> '.$locale['download_1007'].'</a></div>';
                         echo '</div>';
                     echo '</div>';

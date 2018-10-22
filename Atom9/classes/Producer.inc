@@ -198,8 +198,8 @@ class Producer extends Core {
                 }
 
                 $content = ['sm' => 12, 'md' => 12, 'lg' => 12];
-                $left    = ['sm' => 3,  'md' => 2,  'lg' => 3];
-                $right   = ['sm' => 3,  'md' => 2,  'lg' => 3];
+                $left    = ['sm' => 3,  'md' => 2,  'lg' => 2];
+                $right   = ['sm' => 3,  'md' => 2,  'lg' => 2];
 
                 $left_side = TRUE;
                 $right_side = TRUE;
