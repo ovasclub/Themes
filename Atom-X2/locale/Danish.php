@@ -23,7 +23,7 @@ $locale['AX9_005'] = 'Min indbakke';
 $locale['AX9_006'] = 'Du har ingen ulæste beskeder.';
 $locale['AX9_007'] = 'Gå til min indbakke';
 $locale['AX9_008'] = 'Ingen grupper fundet';
-$locale['AX9_009'] = 'Atom-X for PHP-Fusion v9<br/>'.date('Y').' All rights reserved.';
+$locale['AX9_009'] = 'Atom-X2 for PHP-Fusion v9<br/>'.date('Y').' All rights reserved.';
 $locale['AX9_010'] = 'Theme designed by <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Profilside: ';
 $locale['AX9_012'] = 'Skjul mail';
