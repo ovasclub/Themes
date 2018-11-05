@@ -15,7 +15,7 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-@import "assets/fonts/font.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
     font-family: "Roboto", "Verdana", sans-serif;

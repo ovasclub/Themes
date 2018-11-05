@@ -15,10 +15,10 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-@import "assets/fonts/font.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 body {
-    font-family: "Monserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 15px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
