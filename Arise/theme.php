@@ -59,7 +59,7 @@ function render_page() {
 
                         $gallery = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
                         if ($gallery) {
-                            echo '<a class="link" href="'.INFUSIONS.'gallery/gallery.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/gallery.png" alt="'.fusion_get_locale('465', GALLERY_LOCALE).'"/><span>'.fusion_get_locale('465', GALLERY_LOCALE).'</span></a>';
+                            echo '<a class="link" href="'.INFUSIONS.'gallery/gallery.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/gallery.png" alt="'.fusion_get_locale('gallery_465', GALLERY_LOCALE).'"/><span>'.fusion_get_locale('gallery_465', GALLERY_LOCALE).'</span></a>';
                         }
 
                         $faq = function_exists('infusion_exists') ? infusion_exists('faq') : db_exists(DB_PREFIX.'faqs');
@@ -72,7 +72,7 @@ function render_page() {
                             echo '<a class="link" href="'.INFUSIONS.'forum/index.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/forum.png" alt="'.fusion_get_locale('forum_0001', FORUM_LOCALE).'"/><span>'.fusion_get_locale('forum_0001', FORUM_LOCALE).'</span></a>';
                         }
 
-                        $contact = !empty(fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php')) ? fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php') : fusion_get_locale('400', LOCALE.LOCALESET.'contact.php');
+                        $contact = !empty(fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php')) ? fusion_get_locale('CT_400', LOCALE.LOCALESET.'contact.php') : fusion_get_locale('CT400', LOCALE.LOCALESET.'contact.php');
                         echo '<a class="link m-r-0" href="'.BASEDIR.'contact.php"><img class="img-responsive" src="'.THEME.'images/headerimgs/contact.png" alt="'.$contact.'"/><span>'.$contact.'</span></a>';
                     echo '</div>';
                 }
